@@ -400,7 +400,7 @@ function updatepost2() {
 		var score2 = data2["data"]["children"][postnum2]["data"]["score"];
 		  	$("#news-title-2").empty().prepend(title2);
 		  	$("#score-4").empty().append('<i class="fa fa-heart"> </i>' + ' ' + score2);
-		  	$("#news-title-link-2").attr("href","https://reddit.com" + data2["data"]["children"][postnum]["data"]["permalink"]);
+		  	$("#news-title-link-2").attr("href","https://reddit.com" + data2["data"]["children"][postnum2]["data"]["permalink"]);
       	}, 
       	error: function(errorMessage){
         	alert("Reddit ajax call failed");
