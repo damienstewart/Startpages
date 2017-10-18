@@ -1,0 +1,617 @@
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:400,700" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<title>Startpage</title>
+</head>
+
+<body>
+	<div id="parent" class="container">
+
+	  <!-- Navigation -->
+
+	  <header>
+		<div class="navbar">
+		  <div class="logo">
+			<div class="textLogo">Welcome</div>
+		  </div>
+		  <br/>
+		  <br/>
+		  <div class="search">
+			<i class="fa fa-search"></i>
+			<input id="search-bar" type="text" placeholder="Search">
+		  </div>
+		</div>  
+	  </header>
+
+	  <!-- Card Layout -->
+
+	  <div class="cardLayout">
+		<div class="firstRow">
+		  <div class="card card-long">
+			  <a id="card-1-link"><div class="card-long-bg"></div></a>
+			<div class="card-long-block">
+				<div class="card-long-header"><a href="https://www.reddit.com/r/EarthPorn/">/r/EarthPorn</a></div>
+				<a id="title-card-link-1"><p id="title-card-1"></p></a>
+				<p class="score" id="score-1"><i class="fa fa-heart"> </i> </p>
+			</div>
+		  </div>
+
+		  <div class="card l-spacing card-reg card-reg-overlay">
+			 <div class="card-reg-header" id="weekday"></div>
+			 <div class="card-reg-header" id="month-date"></div>
+			 <div class="card-reg-header" id="year"></div>
+		  </div>
+		</div>
+
+		<div class="clear"></div>
+
+		<div class="secondRow">
+		  <div class="card card-reg card-reg-bg">
+			  <div class="card-reg-left-reg" style="padding-top: 19px; font-size: 30px; margin: 10px;"><a href="http://soundcloud.com/"><i style="padding-right: 10px; color: #96cec2;" class="fa fa-soundcloud"> </i></a> <a href="http://youtube.com/"><i style="padding-right: 10px; color: #858f97;" class="fa fa-youtube"> </i></a> <a href="https://open.spotify.com/browse"><i style="color: #96cec2;" class="fa fa-spotify"> </i></a> </div>
+			  
+			  <div class="card-reg-left-reg" style="font-size: 30px; margin: 10px;"> <a href="http://reddit.com/"><i style="padding-left: 6px; padding-right: 14px; color: #858f97;" class="fa fa-reddit"> </i></a> <a href="http://github.com/"><i style="padding-right: 8px; color: #96cec2;" class="fa fa-github"> </i></a> <a href="http://codepen.io/"><i style="color: #858f97;" class="fa fa-codepen"> </i></a> </div>
+		  </div>
+		  <div class="card card-long l-spacing">
+			  <a id="card-2-link"><div class="card-long-bg-two"></div></a> 
+			<div class="card-long-block">
+				<div class="card-long-header"><a href="https://www.reddit.com/r/HipHopImages/">/r/HipHopImages</a></div>
+				<a id="title-card-link-2"><p id="title-card-2"></p></a>
+				<p class="score" id="score-2"> <i class="fa fa-heart"> </i> </p>
+		  	</div>
+		  </div>
+
+		<div class="clear"></div>
+
+		<div class="thirdRow">
+		  <div class="card r-spacing card-xl card-xl-bg">
+			<div class="card-reg-left-xl">/r/News</div>
+			  <a id="news-title-link"><p id="news-title" style="padding-left: 17px; font-family: 'Raleway', sans-serif;
+font-size: 13px;"></p></a>
+			  <p class="score" id="score-3" style="padding-left: 17px; padding-top: 10px; font-family: 'Raleway', sans-serif;
+font-size: 13px;"> </p>
+			  <p id="next-post-news" style="cursor: pointer; padding-left: 17px; padding-top: 10px; font-family: 'Raleway', sans-serif;
+						font-size: 13px;">Next Thread <i class="fa fa-arrow-right"> </i></p>
+		  </div>
+		  <div class="card card-sm card-sm-bg">
+			<div class="card-reg-left-sm" style="padding-top: 21px !important; color: black !important;">BTC Price:</div>
+			  <div id="btc-price" class="card-reg-left-sm"></div>
+		  </div>
+		  </div>
+		</div>
+	</div>  
+	<div id="foot"></div>
+	
+<style type="text/css">
+	/* Universal */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+	text-decoration: none !important;
+	color: black;
+}	
+	
+body {
+  background-color: #e4ecee;
+}
+
+.clear {
+  clear: both;
+}
+
+/* Navigation */
+
+header {
+  margin: 60px 0px; 
+}
+
+.navbar {
+  display: inline-block;
+  width: 100%;
+}
+
+.bar {
+  border-radius: 6px;
+}
+
+.firstLine {
+  background-color: #7e8186;
+  width: 17px;
+  height: 3px;
+  margin-bottom: 2px;
+}
+
+.secondLine {
+  background-color: #7e8186;
+  width: 10px;
+  height: 3px;
+  margin-bottom: 2px;
+}
+
+.thirdLine {
+  background-color: #7e8186;
+  width: 14px;
+  height: 3px;
+}
+
+.fa-search {
+  color: #7e8186;
+  padding-right: 10px;
+  padding-top: 5px;
+  font-size: 20px
+}
+
+.search {
+  position: relative;
+  bottom: 20px;
+  width: 100%;
+}
+
+#search-bar {
+  float: right;
+  height: 30px;
+  width: 88%;
+  background-color: #ffffff;
+  text-align: left;
+  padding-left: 10px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+}
+
+@media (max-width: 394px) {
+  #search-bar {
+    width: 85% !important;
+  }
+}
+
+@media (max-width: 616px) {
+  #search-bar {
+    width: 88%;
+  }
+}
+
+@media (min-width: 617px) {
+  #search-bar {
+    width: 92%;
+  }
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #7e8186;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #7e8186;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #7e8186;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #7e8186;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #7e8186;
+}
+
+.logo {
+  width: 100%;
+}
+
+#news-title {
+	max-width: 270px;
+}
+.textLogo {
+  text-transform: uppercase;
+  color: #7e8186;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  width:100%;
+}
+
+/* Layout */
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Cards */
+
+.card {
+  box-shadow: 2px 0px 120px -6px rgba(0,0,0,0.17);
+  border-radius: 5px;
+}
+
+.card-long {
+  position: relative;
+  background-color: black;
+  width: 335px;
+  height: 150px;
+  float: left;
+}
+
+.card-reg {
+  position: relative;
+  background-color: #000;
+  width: 240px;
+  height: 150px;
+  float: left;
+}
+
+.card-xl {
+  position: relative;
+  background-color: #fff !important;
+  width: 360px;
+  height: 200px; 
+  float: left;
+  border-radius: 5px;
+}
+
+.card-sm {
+  position: relative;
+  background-color: #000;
+  width: 215px;
+  height: 200px;
+  float: left;
+  border-radius: 5px;
+}
+
+ /* Card Styles */
+
+.card-long-bg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background-color: #000;
+  float: left;
+  background-size: cover;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.card-long-bg-two {
+  width: 150px;
+  height: 150px;
+  background-color: #000;
+  float: left;
+  background-size: cover;
+  background-position: 100% 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.card-long-block {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #fff;
+  width: 185px;
+  height: 150px;
+  float: right;
+}
+
+.card-long-header {
+  font-family: 'Playfair Display', sans-serif;
+  line-height: 22px;
+  font-weight: bold; 
+  padding-top: 17px;
+  padding-left: 17px;
+}
+
+.card-reg-left-reg {
+  font-family: 'Playfair Display', sans-serif;
+  line-height: 22px;
+  font-weight: bold; 
+  padding: 0 0px 12px 0;
+  width: 149px;
+}
+
+.card-reg-left-xl {
+  font-family: 'Playfair Display', sans-serif;
+  line-height: 22px;
+  font-weight: bold; 
+  padding: 20px 0px 25px 17px;
+  width: 130px;
+}
+
+.card-reg-left-sm {
+  font-family: 'Playfair Display', sans-serif;
+  color: #ffd21f;
+  line-height: 22px;
+  font-weight: bold; 
+  padding: 12px 0 0 17px;
+  width: 130px;
+}
+
+.card-reg-header {
+  font-family: 'Playfair Display', sans-serif;
+  text-align: left;
+  color: #f0879e;
+  font-weight: 700;
+  position: relative;
+  top: 12%;
+  padding: 0px 25px;
+  line-height: 24px;
+}
+
+.card-long-block p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  padding-top: 15px;
+  padding-left: 17px;
+  padding-right: 17px;
+  line-height: 12px
+}
+
+.card-reg-bg {
+  background: url('https://i.imgur.com/CzUgSsn.png') no-repeat;
+  background-position: bottom right;
+  background-color: white;
+}
+
+.card-xl-bg {
+  background: url('https://i.imgur.com/9GoBMYT.png') no-repeat;
+  background-position: bottom right;
+  background-color: white;
+}
+
+.card-reg-overlay {
+  background: url('https://i.imgur.com/txnElKL.png') no-repeat;
+  background-position: bottom right;
+  background-color: white;
+}
+
+.card-sm-bg {
+  background: url('https://i.imgur.com/3i5ELwh.png') no-repeat;
+  background-position: bottom right;
+  background-color: white;
+}
+
+.l-spacing {
+  margin-left: 25px;
+}
+
+.r-spacing {
+  margin-right: 25px;
+}
+
+.secondRow,
+.thirdRow{
+  margin-top: 20px;
+}
+
+#foot {
+  padding-bottom: 20px;
+}
+	
+input[type=text] {
+	color: #7e8186;
+}
+	
+.score {
+	font-family: 'Roboto Mono', monospace !important;
+	color: #f05023;
+}
+	
+.fa-heart {
+	color: #f05023;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 615px) {
+  .container {
+    width: 90%;
+  }
+  
+  .card {
+    width: 100%;
+    margin: 10px 0 !important;
+  }
+  
+  .card-reg-header {
+    top: 40%;
+  }
+  
+  .card-long-bg,
+  .card-long-bg-two {
+    width: 45%;
+  }
+  
+  .card-long-block {
+    width: 55%;
+  }
+  
+  .l-spacing,
+  .r-spacing,
+  .secondRow,
+  .thirdRow{
+    margin: 0;
+  }
+}
+</style>
+
+<script>
+$(document).ready(function(){
+// Search Bar Functionality
+	
+  $(".fa-search").click(function(){
+	  var searchQuery = $("#search-bar").val();
+	  window.location.href = 'http://www.google.com/search?q=' + searchQuery;
+  });
+	
+  $("#search-bar").keypress(function(event) {
+	var searchQuery = $("#search-bar").val();
+    if ( event.which == 13 ) {
+      window.location.href = 'http://www.google.com/search?q=' + searchQuery;
+    }
+  }); // END Keypress Function
+	
+// Pulls the first post from a subreddit 
+	
+	var subreddit = "earthporn";
+    var apiurl = 'https://www.reddit.com/r/' + subreddit + '/.json?';
+    var postnum = 0;
+	
+    $.ajax({
+      type: "GET",
+      url: apiurl,
+      async: false,
+      dataType: 'json',
+      success: function(data){ 
+        var title = data["data"]["children"][0]["data"]["title"];
+		var score = data["data"]["children"][0]["data"]["score"];
+		  $("#title-card-1").prepend(title);
+		  $("#score-1").append(score);
+		  $(".card-long-bg").css("background", "url(" + data["data"]["children"][0]["data"]["thumbnail"] + ")").css("background-size","cover");
+		  $("#card-1-link").attr("href","https://reddit.com" + data["data"]["children"][0]["data"]["permalink"]);
+		  $("#title-card-link-1").attr("href","https://reddit.com" + data["data"]["children"][0]["data"]["permalink"]);
+      }, 
+      error: function(errorMessage){
+        alert("Reddit ajax call failed");
+      }
+      
+    }); // END ajax call
+	
+	var subreddit = "hiphopimages";
+    var apiurl = 'https://www.reddit.com/r/' + subreddit + '/.json?';
+    
+    $.ajax({
+      type: "GET",
+      url: apiurl,
+      async: false,
+      dataType: 'json',
+      success: function(data){ 
+        var title = data["data"]["children"][2]["data"]["title"];
+		var score = data["data"]["children"][2]["data"]["score"];
+		  $("#title-card-2").prepend(title);
+		  $("#score-2").append(score);
+		  $(".card-long-bg-two").css("background", "url(" + data["data"]["children"][2]["data"]["thumbnail"] + ")").css("background-size","cover");
+		  $("#card-2-link").attr("href","https://reddit.com" + data["data"]["children"][2]["data"]["permalink"]);
+		  $("#title-card-link-2").attr("href","https://reddit.com" + data["data"]["children"][2]["data"]["permalink"]);
+      }, 
+      error: function(errorMessage){
+        alert("Reddit ajax call failed");
+      }
+      
+    }); // END ajax call
+	
+	var subreddit = "News";
+    var apiurl = 'https://www.reddit.com/r/' + subreddit + '/.json?';
+    var postnum = 0;
+	
+	function updatepost() {
+    	$.ajax({
+      	type: "GET",
+      	url: apiurl,
+      	async: false,
+      	dataType: 'json',
+      	success: function(data){ 
+        	var title = data["data"]["children"][postnum]["data"]["title"];
+			var score = data["data"]["children"][postnum]["data"]["score"];
+		  		$("#news-title").empty().prepend(title);
+		  		$("#score-3").empty().append('<i class="fa fa-heart"> </i>' + ' ' + score);
+		  		$("#news-title-link").attr("href","https://reddit.com" + data["data"]["children"][postnum]["data"]["permalink"]);
+      		}, 
+      		error: function(errorMessage){
+        		alert("Reddit ajax call failed");
+	  		}
+      
+    	}); // END ajax call
+	}
+	updatepost();
+	
+	$("#next-post-news").click(function(){
+		postnum = postnum+1;
+		updatepost();
+	});
+	
+var date = new Date();
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+var weekday = weekdays[date.getDay()];
+var month = date.getMonth();
+var monthday = date.getDate();
+var year = date.getYear();	
+
+$('#weekday').html(weekday);
+	
+switch (monthday) {
+	case 1:
+	case 21: 
+	case 31:
+    	var affix = "st";
+		$('#month-date').html(months[month] + ", " + monthday + affix);
+    	break;
+	case 2: 
+	case 22:
+    	var affix = "nd";
+		$('#month-date').html(months[month] + ", " + monthday + affix);
+    	break;
+	case 3: 
+	case 23:
+     	var affix = "rd";
+		$('#month-date').html(months[month] + ", " + monthday + affix);
+   	break;
+	case 4: 
+	case 5: 
+	case 6: 
+	case 7: 
+	case 8: 
+	case 9: 
+	case 10: 
+	case 11: 
+	case 12: 
+	case 13: 
+	case 14: 
+	case 15: 
+	case 16: 
+	case 17: 
+	case 18: 
+	case 19: 
+	case 20: 
+	case 24: 
+	case 25: 
+	case 26: 
+	case 27: 
+	case 28: 
+	case 29:
+	case 30:
+   	var affix = "th";
+		$('#month-date').html(months[month] + ", " + monthday + affix);
+}
+$('#year').html(year + 1900);
+
+// Gets Current BTC Price
+function btcprice() {
+var currency = "CAD";
+var apiurl = 'https://api.coindesk.com/v1/bpi/currentprice/' + currency + '.json';
+    
+$.ajax({
+  type: "GET",
+  url: apiurl,
+  async: false,
+  dataType: 'json',
+  success: function(data){ 
+    var price = data["bpi"][currency]["rate_float"];
+	  var priceRounded = Math.round(price);
+	  $("#btc-price").append("$" + priceRounded + " " + currency);
+    }, 
+  error: function(errorMessage){
+      alert("ajax call failed");
+    }  
+}); // END ajax call	
+}
+btcprice();
+}); // END document ready function	
+</script>	
+</body>
+
+	

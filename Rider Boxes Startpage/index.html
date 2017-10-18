@@ -1,0 +1,331 @@
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+	<title>Startpage</title>
+</head>
+
+<body>
+	<div class="in_grid">
+		<div id="search">
+			<input id="search-bar" type="text" placeholder="&#xF002;" />
+		</div>
+	</div>
+	
+	<div id="row2" class="row">
+		<div class="in_grid">
+			<div id="box3" class="box">
+				<div class="row">
+					<p id="title3" class="title">&lt; bitcoin price: <span id="btc-price"></span> &gt;</p>
+				</div>
+			</div>
+		</div>
+	
+		<div class="in_grid">
+			<div id="box4" class="box">
+				<p id="title4" class="title">&lt; <span id="month-date"></span> &gt;</p>
+			</div>
+		</div>
+	</div>
+	
+	<div id="row1" class="row">
+		<div class="in_grid">
+			<div id="box1" class="box">
+				<div class="row">
+					
+					<p id="title1" class="title">&lt; website links &gt;</p>
+					
+					<div id="col-1" class="website-links">
+						<p>&gt; youtube</p>
+						<p>&gt; soundcloud</p>
+						<p>&gt; play music</p>
+						<p>&gt; reddit</p>
+						<p>&gt; instagram</p>
+						<p>&gt; twitter</p>
+					</div>
+					
+					<div id="col-2" class="website-links">
+						<p>&gt; gmail</p>
+						<p>&gt; netflix</p>
+						<p>&gt; ars technica</p>
+						<p>&gt; the verge</p>
+						<p>&gt; codepen</p>
+						<p>&gt; github</p>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="in_grid">
+			<div id="box2" class="box">
+				<p id="title2" class="title">&lt; weather info &gt;</p>
+			</div>
+		</div>
+	</div>
+<style>
+	html {
+		min-width: 320px;
+		margin: 0;
+		height: 100%;
+		background-color: #1e212a;
+		background-image: url("http://res.cloudinary.com/http-www-okvitae-com/image/upload/v1508300501/background-image_m9earo.png");
+    	background-position: center center;
+		background-repeat: repeat;
+    	background-size: cover;
+	}
+	@font-face {
+    font-family: 'hermitlight';
+    src: url('css/fonts/hermit-light-webfont.woff2') format('woff2'),
+         url('css/fonts/hermit-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+	}
+	p {
+		font-family: 'hermitlight';
+		text-transform: lowercase;
+	}
+	#search-bar {
+    	width: 100%;
+    	border: 2px solid #bfffaa;
+		color: #bfffaa;
+    	padding: 10px;
+		background-color: rgba(0,0,0,0.5);
+		font-size: 16px;
+		padding-left: 12px;
+		margin-top: 10%;	
+	}
+	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+		font-family:Arial, FontAwesome;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		font-family:Arial, FontAwesome;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+		font-family:Arial, FontAwesome;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		font-family:Arial, FontAwesome;
+	}
+	::-ms-input-placeholder { /* Microsoft Edge */
+		font-family:Arial, FontAwesome;
+	}
+	input[type=text]{
+		font-family: 'hermitlight';
+	}
+	.row {
+		width: 100%;
+	}
+	#row1 {
+		margin-top: 6%;
+	}
+	#box3, #box4 {
+		margin-bottom: 6%;
+	}
+	.in_grid {
+		margin-left: 6%;
+		margin-right: 6%;
+	}
+	#box1, #box2 {
+		width: 45%;
+		height: 300px;
+		background-color: rgba(0,0,0,0.5);
+	}
+	#box3, #box4 {
+		width: 45%;
+		height: 35px;
+		background-color: rgba(0,0,0,0.5);
+	}
+	#box1 {
+		float: left;
+		border: 2px solid #b4eef3;
+	}
+	#box3 {
+		float: left;
+		border: 2px solid #ffe9b4;
+	}
+	#box2 {
+		float: right;
+		border: 2px solid #ffaae9;
+	}
+	#box4 {
+		float: right;
+		border: 2px solid #aab4ff;
+	}
+	#box3, #box4 {
+		margin-top: 6%;
+	}
+	.title {
+		text-align: center;
+		margin-top: 8px !important;
+		padding-bottom: 8px !important;
+		color: white;
+	}
+	#title1 {
+		border-bottom: 2px solid #b4eef3;
+	}
+	#title2 {
+		border-bottom: 2px solid #ffaae9;
+	}
+	#col-2 {
+		float: right;
+	}
+	.website-links p {
+		color: white;
+	}
+	.website-links {
+		width: 34%;
+		float: left;
+		padding-left: 16%;
+		padding-top: 1px;
+	}
+	@media (max-width: 1340px) {
+		.website-links {
+			padding-left: 12%;
+		}
+	}
+	@media (max-width: 1200px) {
+		.website-links {
+			width: 43%;
+			padding-left: 7%;
+		}
+	}
+	@media (max-width: 820px) {
+		#box1, #box2 {
+			width: 100%;
+			margin-top: 6%;
+			float: left;
+		}
+		#box2 {
+			margin-bottom: 6%;
+		}
+		.website-links {
+    		width: 34%;
+			padding-left: 12%;
+		}
+		#search-bar {
+			margin-bottom: 6%;
+		}
+	}
+	@media (max-width: 686px) {
+		.website-links {
+			width: 41%;
+			padding-left: 9%;
+		}
+		#box3, #box4 {
+    		width: 100%;
+		}
+		#box4 {
+			float: left;
+		}
+	}
+	@media (max-width: 400px) {
+		.website-links {
+			width: 43%;
+			padding-left: 7%;
+		}
+		#col-2 {
+			float: left;
+		}
+	}
+	@media (max-width: 380px) {
+		.website-links {
+			width: 43%;
+			padding-left: 7%;
+		}
+		#col-2 {
+			float: left;
+		}
+	}
+</style>	
+	
+<script>
+$(document).ready(function(){
+	
+$("#search-bar").keypress(function(event) {
+var searchQuery = $("#search-bar").val();
+  if ( event.which == 13 ) {
+    window.location.href = 'http://www.google.com/search?q=' + searchQuery;
+  }
+}); // END Keypress Function	
+	
+function btcprice() {
+var currency = "CAD";
+var apiurl = 'https://api.coindesk.com/v1/bpi/currentprice/' + currency + '.json';
+    
+$.ajax({
+  type: "GET",
+  url: apiurl,
+  async: false,
+  dataType: 'json',
+  success: function(data){ 
+    var price = data["bpi"][currency]["rate_float"];
+	  var priceRounded = Math.round(price);
+	  $("#btc-price").append("$" + priceRounded + " " + currency);
+    }, 
+  error: function(errorMessage){
+      alert("ajax call failed");
+    }  
+}); // END ajax call	
+}
+btcprice();
+	
+//Date Functionality
+var date = new Date();
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+var weekday = weekdays[date.getDay()];
+var month = date.getMonth();
+var monthday = date.getDate();
+var year = date.getYear();	
+
+$('#weekday').html(weekday);
+	
+switch (monthday) {
+	case 1:
+	case 21: 
+	case 31:
+    	var affix = "st";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
+    	break;
+	case 2: 
+	case 22:
+    	var affix = "nd";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
+    	break;
+	case 3: 
+	case 23:
+     	var affix = "rd";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
+   	break;
+	case 4: 
+	case 5: 
+	case 6: 
+	case 7: 
+	case 8: 
+	case 9: 
+	case 10: 
+	case 11: 
+	case 12: 
+	case 13: 
+	case 14: 
+	case 15: 
+	case 16: 
+	case 17: 
+	case 18: 
+	case 19: 
+	case 20: 
+	case 24: 
+	case 25: 
+	case 26: 
+	case 27: 
+	case 28: 
+	case 29:
+	case 30:
+   	var affix = "th";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>, " + (year+1900));
+}
+}); // END document ready function	
+</script>
+
+</body>

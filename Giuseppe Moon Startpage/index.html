@@ -1,0 +1,215 @@
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Coming+Soon" rel="stylesheet"> 
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<title>Startpage</title>
+</head>
+
+<body>
+	
+	<div class="date">
+		<h1 id="weekday" style="text-transform: uppercase;"></h1>
+		<p style="text-transform: uppercase;"><span id="month"></span><span id="month-date"></span><span id="year"></span></p>
+	</div>	
+		
+	<input id="search-bar" type="text" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" />
+	
+	<div class="container">
+		<div class="drawer">
+			<div class="first-row">
+				<a href="http://reddit.com/"><img src="https://i.imgur.com/bKyN1Jo.png" class="icons"></a>
+				<a href="http://amazon.ca/"><img src="https://i.imgur.com/Jibu0hD.png" class="icons"></a>
+				<a href="http://instagram.com/"><img src="https://i.imgur.com/IVRcYmm.png" class="icons"></a>
+				<a href="http://netflix.com/"><img src="https://i.imgur.com/henqOn6.png" class="icons"></a>
+				<a href="https://open.spotify.com/browse/featured"><img src="https://i.imgur.com/5xOBK3j.png" class="icons"></a>
+			</div>
+			
+			<div class="second-row">
+				<a href="https://www.theverge.com/"><img src="https://i.imgur.com/vblL2S1.png" class="icons"></a>
+				<a href="https://www.google.ca/search?q=weather+this+week&ie=utf-8&oe=utf-8&gws_rd=cr&dcr=0&ei=D13kWY2jLca_0wLX1IrAAQ"><img src="https://i.imgur.com/LPPUk1v.png" class="icons"></a>
+				<a href="http://facebook.com/"><img src="https://i.imgur.com/uo0TP4N.png" class="icons"></a>
+				<a href="https://mail.google.com"><img src="https://i.imgur.com/mXDJ9IV.png" class="icons"></a>
+				<a href="http://youtube.com/"><img src="https://i.imgur.com/BwUt4WK.png" class="icons"></a>
+			</div>
+		</div>
+	</div>
+	
+<style>
+	html {
+		min-width: 320px;
+		margin: 0;
+		height: 100%;
+		background-color: #252a54;
+		background-image: url("https://i.imgur.com/PCHI3YM.png");
+    	height: 80%; 
+    	background-position: top left;
+		background-repeat: no-repeat;
+    	background-size: contain;
+	}
+	#search-bar {
+		margin: auto;
+    	width: 50%;
+    	border: 2px solid #ba175a;
+    	padding: 10px;
+		display: block;
+    	float: right;
+		background-color: rgba(0,0,0,0.3);
+		border-radius: 6px;
+		color: #ba175a;
+		position: absolute;
+		top: 45%;
+		right: 10px;
+		font-size: 18px;
+		padding-left: 12px;
+	}
+	.date {
+		font-family: 'Coming Soon', cursive;
+		text-align: center;
+		width: 50%;
+		float: right;
+	}
+	.date h1 {
+		font-size: 68px;
+		color: #ba175a;
+		margin: 0;
+		padding-top: 0.5em;
+	}
+	.date p {
+		margin: 0;
+		color: #ba175a;
+	}
+	.container {
+		width: 100%;
+	}
+	.drawer {
+		min-height: 125px;
+		width: 40%;
+		border-top: 2px solid #ba175a;
+		border-left: 2px solid #ba175a;
+		border-right: 2px solid #ba175a;
+		border-top-left-radius: 6px;
+    	border-top-right-radius: 6px;
+		background: rgba(0,0,0,0.3);
+		text-align: center;
+		position: absolute;
+    	bottom: 0;
+		left: 31%;
+    	margin: 0 auto;
+	}
+	.first-row {
+		width: 100%;
+	}
+	.icons {
+		width: 50px;
+		padding: 14px;
+	}
+	@media (max-width: 1015px) {
+		.icons {
+			width: 40px;
+			padding: 10px;
+		}
+	}
+	@media (max-width: 790px) {
+		.drawer {
+			width: 90%;
+			left: 5%;
+		}
+	}
+	@media (max-width: 742px) {
+		.drawer {
+			width: 90%;
+			left: 5%;
+		}
+		#search-bar {
+			width: 95%;
+			background-color: rgba(0,0,0,0.6);
+		}
+	}
+	@media (max-width: 700px) {
+		.date {
+			width: 100%;
+			background-color: rgba(0,0,0,0.6);
+			border-radius: 6px;
+			padding-bottom: 10px;
+		}
+		.date h1 {
+			padding-top: 0;
+		}
+		
+	}
+	@media (max-width: 1015px) {
+		.icons {
+			width: 40px;
+			padding: 6px;
+		}
+	}
+</style>	
+<script>
+$(document).ready(function() {
+// Search Bar Functionality
+  $("#search-bar").keypress(function(event) {
+	var searchQuery = $("#search-bar").val();
+    if ( event.which == 13 ) {
+      window.location.href = 'http://www.google.com/search?q=' + searchQuery;
+    }
+  }); // END Keypress Function
+	
+//Date Functionality
+var date = new Date();
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+var weekday = weekdays[date.getDay()];
+var month = date.getMonth();
+var monthday = date.getDate();
+var year = date.getYear();	
+
+$('#weekday').html(weekday);
+	
+switch (monthday) {
+	case 1:
+	case 21: 
+	case 31:
+    	var affix = "st";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
+    	break;
+	case 2: 
+	case 22:
+    	var affix = "nd";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
+    	break;
+	case 3: 
+	case 23:
+     	var affix = "rd";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
+   	break;
+	case 4: 
+	case 5: 
+	case 6: 
+	case 7: 
+	case 8: 
+	case 9: 
+	case 10: 
+	case 11: 
+	case 12: 
+	case 13: 
+	case 14: 
+	case 15: 
+	case 16: 
+	case 17: 
+	case 18: 
+	case 19: 
+	case 20: 
+	case 24: 
+	case 25: 
+	case 26: 
+	case 27: 
+	case 28: 
+	case 29:
+	case 30:
+   	var affix = "th";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>, ");
+}
+$('#year').html(year + 1900);
+}); // END Document Ready Function
+</script>
+</body>
