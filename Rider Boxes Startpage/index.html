@@ -58,7 +58,20 @@
 	
 		<div class="in_grid">
 			<div id="box2" class="box">
-				<p id="title2" class="title">&lt; weather info &gt;</p>
+				<p id="title2" class="title">&lt; reddit news &gt;</p>
+				
+			<div id="news-post-1">	
+			  <a id="news-title-link"><p id="news-title" style="padding-left: 17px; padding-right: 17px; font-size: 13px;"></p></a>
+			  <p class="score" id="score-3" style="float: left; padding-left: 17px; padding-top: 10px; font-size: 13px;"> </p>
+				<p id="next-post-news" style="float: right; cursor: pointer; padding-right: 17px; padding-top: 10px; font-size: 13px;">Next Thread  <span class="right-arr">&gt;</span></p>
+			</div>
+				
+			<div id="news-post-2">
+			  <a id="news-title-link-2"><p id="news-title-2" style="padding-left: 17px; padding-right: 17px; font-size: 13px;"></p></a>
+			  <p class="score-2" id="score-4" style="float: left; padding-left: 17px; padding-top: 10px; font-size: 13px;"> </p>
+			  <p id="next-post-news-2" style="float: right; cursor: pointer; padding-right: 17px; padding-top: 10px; font-size: 13px;">Next Thread <span class="right-arr">&gt;</span></p>
+			</div>	
+				
 			</div>
 		</div>
 	</div>
@@ -84,6 +97,10 @@
 	p {
 		font-family: 'hermitlight';
 		text-transform: lowercase;
+		color: white;
+	}
+	a {
+		text-decoration: none;
 	}
 	#search-bar {
     	width: 100%;
@@ -178,6 +195,15 @@
 		float: left;
 		padding-left: 16%;
 		padding-top: 1px;
+	}
+	#news-post-1 {
+		height: 100px;
+	}
+	#news-post-2 {
+		height: 100px;
+	}
+	.right-arr, .fa-heart {
+		color: #ffaae9;
 	}
 	@media (max-width: 1340px) {
 		.website-links {
@@ -325,6 +351,68 @@ switch (monthday) {
    	var affix = "th";
 		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>, " + (year+1900));
 }
+			
+var subreddit = "News";
+var apiurl = 'https://www.reddit.com/r/' + subreddit + '/.json?';
+var postnum = 1;
+	
+function updatepost() {
+    $.ajax({
+      type: "GET",
+      url: apiurl,
+      async: false,
+      dataType: 'json',
+      success: function(data){ 
+        var title = data["data"]["children"][postnum]["data"]["title"];
+		var score = data["data"]["children"][postnum]["data"]["score"];
+		  	$("#news-title").empty().prepend(title);
+		  	$("#score-3").empty().append('<i class="fa fa-heart"> </i>' + ' ' + score);
+		  	$("#news-title-link").attr("href","https://reddit.com" + data["data"]["children"][postnum]["data"]["permalink"]);
+      	}, 
+      	error: function(errorMessage){
+        	alert("Reddit ajax call failed");
+  		}      
+    }); // END ajax call
+} // End Update Post function
+updatepost();
+	
+$("#next-post-news").click(function(){
+	postnum = postnum+2;
+	updatepost();
+});
+	
+	
+var subreddit2 = "News";
+var apiurl2 = 'https://www.reddit.com/r/' + subreddit + '/.json?';
+var postnum2 = 2;
+	
+function updatepost2() {
+    $.ajax({
+      type: "GET",
+      url: apiurl,
+      async: false,
+      dataType: 'json',
+      success: function(data2){ 
+        var title2 = data2["data"]["children"][postnum2]["data"]["title"];
+		var score2 = data2["data"]["children"][postnum2]["data"]["score"];
+		  	$("#news-title-2").empty().prepend(title2);
+		  	$("#score-4").empty().append('<i class="fa fa-heart"> </i>' + ' ' + score2);
+		  	$("#news-title-link-2").attr("href","https://reddit.com" + data2["data"]["children"][postnum]["data"]["permalink"]);
+      	}, 
+      	error: function(errorMessage){
+        	alert("Reddit ajax call failed");
+  		}      
+    }); // END ajax call
+} // End Update Post function
+updatepost2();
+	
+$("#next-post-news-2").click(function(){
+	postnum2 = postnum2+2;
+	updatepost2();
+});
+		
+	
+	
 }); // END document ready function	
 </script>
 
