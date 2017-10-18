@@ -60,7 +60,7 @@
 			<div id="box2" class="box">
 				<p id="title2" class="title">&lt; reddit news &gt;</p>
 				
-			<div id="news-post-1">	
+			<div id="news-post-1" style="margin-top: 26px;">	
 			  <a id="news-title-link"><p id="news-title" style="padding-left: 17px; padding-right: 17px; font-size: 13px;"></p></a>
 			  <p class="score" id="score-3" style="float: left; padding-left: 17px; padding-top: 10px; font-size: 13px;"> </p>
 				<p id="next-post-news" style="float: right; cursor: pointer; padding-right: 17px; padding-top: 10px; font-size: 13px;">Next Thread  <span class="right-arr">&gt;</span></p>
@@ -96,6 +96,7 @@
 	}
 	p {
 		font-family: 'hermitlight';
+		font-size: 13px;
 		text-transform: lowercase;
 		color: white;
 	}
@@ -108,7 +109,7 @@
 		color: #bfffaa;
     	padding: 10px;
 		background-color: rgba(0,0,0,0.5);
-		font-size: 16px;
+		font-size: 13px;
 		padding-left: 12px;
 		margin-top: 10%;	
 	}
@@ -177,6 +178,7 @@
 		margin-top: 8px !important;
 		padding-bottom: 8px !important;
 		color: white;
+		line-height: 1.8;
 	}
 	#title1 {
 		border-bottom: 2px solid #b4eef3;
@@ -349,7 +351,7 @@ switch (monthday) {
 	case 29:
 	case 30:
    	var affix = "th";
-		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>, " + (year+1900));
+		$('#month-date').html(months[month] + ", " + monthday + affix + " " + (year+1900));
 }
 			
 var subreddit = "News";
