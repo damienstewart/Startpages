@@ -1,0 +1,707 @@
+<head>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" />
+	<title>Startpage</title>
+</head>
+
+<body>
+	
+<i style="font-size: 18px; position: absolute; top: 13px; left: 11px; text-shadow: 0 0 14px #000;" id="settings" class="fa fa-gear"></i>
+<div id="settings-overlay">
+	<i style="font-size: 18px; color: white !important; position: absolute; top: 13px; right: 11px; text-shadow: 0 0 14px #000;" id="settings" class="fa fa-info-circle"></i>
+	<div id="info-popup">
+		<p>Hello!</p>
+		<p><strong>Colour Fields</strong> accept all CSS accepted colour values. <a href="https://www.w3schools.com/colors/default.asp">View information on CSS accepted colour values</a> </p>
+		<p><strong>Change Icon Fields</strong> accept all Font Awesome icon names. <a href="http://fontawesome.io/icons/">View a full list of Font Awesome Icons</a> </p>
+		<p><strong>Icon URL Fields</strong> accepts any URL </p>
+		<p><strong>Solid Menu Toggle</strong> is recommended for dark background coloured themes.</p>
+		<p>Your settings are safe on page refresh, they are stored in your browser using localStorage. localStorage data can be refreshed in various ways in the different browsers, Google "localStorage wipe in (your browser here)" for more information.</p>
+		<p>This startpage was built by <a href="http://damienstewart.me">Damien Stewart</a> with <i style="padding: 0 !important;
+			font-size: 12px;" class="fa fa-heart"></i> find me on <a href="https://www.instagram.com/damienstewart.me/"><i style="padding: 0 !important;
+			font-size: 12px;" class="fa fa-instagram"> </i></a> &amp; <a href="https://codepen.io/who/#"><i style="padding: 0 !important;
+			font-size: 12px;" class="fa fa-codepen"> </i></a> &amp; <a href="https://github.com/damienstewart"><i style="padding: 0 !important;
+			font-size: 12px;" class="fa fa-github"> </i></a></p>
+	</div>
+	<div id="scroll">
+	<div class="container" style="margin-top: 40px;">
+		<p style="margin-top: 0 !important;margin-bottom: 0 !important;">Background Color: <input type="text" id="bckgrnd" placeholder="#009688" value="#009688" /></p>
+	</div>
+	<div class="container container-sm">
+		<p style="margin-top: 0 !important;margin-bottom: 0 !important;">Card Color: <input type="text" id="card-color" placeholder="cadetblue" value="cadetblue" /></p>
+	</div>
+	<div class="container container-sm">
+		<p style="margin-top: 0 !important;margin-bottom: 0 !important;">Set Link / Icon Color: <input type="text" id="link-color" placeholder="#585858" value="#585858" /></p>
+	</div>
+	<div class="container container-sm">
+		<p style="margin-top: 0 !important;margin-bottom: 0 !important;">Set Date Color: <input type="text" id="date-color" placeholder="#585858" value="#585858" /></p>
+	</div>
+	<div class="container change-icon" id="change-icon-1">
+		<p>Change Icon 1: <input id="change-icon-1-val" type="text" style="float: right;margin-right: 10px;" value="facebook" /></p>
+		<p>Icon URL 1: <input id="change-link-1-val" type="text" style="float: right;margin-right: 10px;" value="http://facebook.com" /></p>
+	</div>
+	<div class="container change-icon" id="change-icon-2">
+		<p>Change Icon 2: <input id="change-icon-2-val" type="text" style="float: right;margin-right: 10px;" value="soundcloud" /></p>
+		<p>Icon URL 2: <input id="change-link-2-val" type="text" style="float: right;margin-right: 10px;" value="http://soundcloud.com" /></p>
+	</div>
+	<div class="container change-icon" id="change-icon-3">
+		<p>Change Icon 3: <input id="change-icon-3-val" type="text" style="float: right;margin-right: 10px;" value="youtube" /></p>
+		<p>Icon URL 3: <input id="change-link-3-val" type="text" style="float: right;margin-right: 10px;" value="http://youtube.com" /></p>
+	</div>
+	<div class="container change-icon" id="change-icon-4">
+		<p>Change Icon 4: <input id="change-icon-4-val" type="text" style="float: right;margin-right: 10px;" value="github" /></p>
+		<p>Icon URL 4: <input id="change-link-4-val" type="text" style="float: right;margin-right: 10px;" value="http://github.com" /></p>
+	</div>
+	<div class="container change-icon" id="change-icon-5">
+		<p>Change Icon 5: <input id="change-icon-5-val" type="text" style="float: right;margin-right: 10px;" value="codepen" /></p>
+		<p>Icon URL 5: <input id="change-link-5-val" type="text" style="float: right;margin-right: 10px;" value="http://codepen.com" /></p>
+	</div>
+	<div class="container container-sm">
+		<p>Toggle Solid Menu: <input type="checkbox" id="switch" /><label for="switch"></label></p>
+	</div>
+	</div>
+	
+	<button id="save-btn" class="hvr-float-shadow">Save</button>
+</div>	
+
+<div class="content">
+  <div class="card">
+    <div class="firstinfo"><img src="http://res.cloudinary.com/http-www-okvitae-com/image/upload/v1508633124/white-circle-128x128_x8bwyu.png"/>
+      <div class="profileinfo">
+		<h1 class="date" id="weekday" style="width: 300px;height: 40px; margin-bottom: 0;"></h1>
+        <h1 class="date" id="month-date" style="width: 300px;height: 40px; margin-top: 2px;"></h1>
+        <h3 id="btc-price">btc price: </h3>
+        <input id="search-bar" type="text" placeholder="&#xF002; search" />
+      </div>
+    </div>
+  </div>
+	<div class="badgescard"> <a id="link-1" href="http://facebook.com/"><i id="icon-1" class="links fa fa-facebook"> </i></a> <a id="link-2" href="http://soundcloud.com/"><i id="icon-2" class="links fa fa-soundcloud"> </i></a> <a id="link-3" href="http://youtube.com/"><i id="icon-3" class="links fa fa-youtube"> </i></a> <a id="link-4" href="http://github.com/"><i id="icon-4" class="links fa fa-github"> </i></a> <a id="link-5" href="http://codepen.io/"><i id="icon-5" class="links fa fa-codepen"> </i></a> </div>
+</div>
+	
+<style>
+@import "https://fonts.googleapis.com/css?family=Open+Sans:300,400";
+body, .badgescard, .firstinfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  min-height: 100%;
+  background: #009688;
+  font-size: 16px;
+  overflow: hidden;
+  margin: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+p {
+	font-family: 'Open Sans', sans-serif;
+}
+.content {
+  position: relative;
+  animation: animatop 0.9s cubic-bezier(0.425, 1.14, 0.47, 1.125) forwards;
+}
+
+.card {
+  width: 500px;
+  min-height: 100px;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+.card:after {
+  content: '';
+  display: block;
+  width: 190px;
+  height: 470px;
+  background: cadetblue;
+  position: absolute;
+  animation: rotatemagic 0.75s cubic-bezier(0.425, 1.04, 0.47, 1.105) 1s both;
+}
+
+.badgescard {
+  padding: 10px 20px;
+  border-radius: 3px;
+  background-color: #ECECEC;
+  width: 480px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: -1;
+  left: 10px;
+  bottom: 10px;
+  animation: animainfos 0.5s cubic-bezier(0.425, 1.04, 0.47, 1.105) 0.75s forwards;
+  height: 43px;
+}
+.badgescard span {
+  font-size: 1.6em;
+  margin: 0px 6px;
+  opacity: 0.6;
+}
+.fa {
+	color: #585858;
+	font-size: 24px;
+	padding-left: 14px;
+	padding-right: 14px;
+}
+.firstinfo {
+  flex-direction: row;
+  z-index: 2;
+  position: relative;
+}
+.firstinfo img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+.firstinfo .profileinfo {
+  padding: 0px 20px;
+}
+.firstinfo .profileinfo h1 {
+  font-size: 1.8em;
+}
+.firstinfo .profileinfo h3 {
+  font-size: 1.2em;
+  color: #009688;
+  font-style: italic;
+}
+.firstinfo .profileinfo p.bio {
+  padding: 10px 0px;
+  color: #5A5A5A;
+  line-height: 1.2;
+  font-style: initial;
+}
+
+@keyframes animatop {
+  0% {
+    opacity: 0;
+    bottom: -500px;
+  }
+  100% {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
+@keyframes animainfos {
+  0% {
+    bottom: 10px;
+  }
+  100% {
+    bottom: -42px;
+  }
+}
+@keyframes rotatemagic {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg);
+    top: -24px;
+    left: -253px;
+  }
+  100% {
+    transform: rotate(-30deg);
+    top: -24px;
+    left: -78px;
+  }
+}	
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+	font-family:Arial, FontAwesome;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	font-family:Arial, FontAwesome;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+	font-family:Arial, FontAwesome;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	font-family:Arial, FontAwesome;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+	font-family:Arial, FontAwesome;
+}
+/* SETTINGS */
+#scroll {
+	height: calc(100% - 72px);
+    overflow-y: auto;
+	border-bottom: 2px solid rgba(0,0,0,0.2);
+	transition: 1s filter linear;
+}
+#info-popup {
+	background-color: white;
+	border-radius: 10px;
+	height: 450px;
+	width: 90%;
+	position: absolute;
+	top: 45px;
+	left: 5%;
+	padding-left: 15px;
+	font-size: 13px;
+	box-shadow: 0px 0px 25px #000;
+	z-index: 9999999;
+}
+.fa-gear {
+	color: #ffffff !important;
+	font-size: 18px !important;
+	padding-left: 7px !important;
+	cursor: pointer;
+}
+	
+#settings-overlay {
+	background: rgba(250,250,250,0.2);
+	width: 300px;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	box-shadow: 0px 0px 14px 12px rgba(0,0,0,0.3);
+	z-index: 9999;
+}
+#settings {
+	z-index: 999999;
+}
+.container {
+	margin-top: 24px;
+	text-align: center;
+	width: 100%;
+	color: #303030;
+}	
+.open {	
+	-webkit-transition: -webkit-transform 1s ease-in-out;
+	transform: translateX(300px);
+}	
+.close {
+	-webkit-transition: -webkit-transform 1s ease-in-out;
+}
+.blur {
+	filter: blur(10px);		
+}
+#save-btn {
+	position: absolute;
+	bottom: 16px;
+	right: 24px;
+	background-color: rgba(0,0,0,0.1);
+	border: 2px solid rgba(0,0,0,0.1);
+	border-radius: 20px;
+	height: 40px;
+	width: calc(100% - 44px);
+	font-family: 'Open Sans', sans-serif;
+	text-transform: lowercase;
+	font-size: 14px;
+	color: #303030;
+	letter-spacing: 2px;
+}
+#save-btn:active {
+  background-color: rgba(0,0,0,0.2);
+  box-shadow: 0 5px rgba(0,0,0,0.2);
+}
+#search-bar {
+	text-align: left;
+	padding-left: 10px;
+}
+body .change-icon input[type=text] {
+	height: 25px;
+	width: 50%;
+	font-size: 12px;
+}
+	
+input[type=text] {
+	background-color: rgba(0,0,0,0.1);
+	border: 2px solid rgba(0,0,0,0.1);
+	border-radius: 20px;
+	height: 26px;
+	width: calc(100% - 44px);
+	font-family: 'Open Sans', sans-serif;
+	text-transform: lowercase;
+	font-size: 14px;
+	text-align: center;
+	color: #303030;
+}
+.container-sm {
+	margin-top: 12px !important;
+}
+	
+/* Toggle Switch */	
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 50px;
+	height: 26px;
+	background: rgba(0,0,0,0.2);
+	display: block;
+	border-radius: 100px;
+	position: relative;
+	float: right;
+	margin-right: 10px;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 5px;
+	width: 22px;
+	height: 22px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+input:checked + label {
+	background: #008040;
+	float: right;
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 40px;
+}
+	
+</style>
+	
+<script>
+$(document).ready(function(){
+	
+	$("#info-popup").hide();
+	var infoCount = 2;
+	$(".fa-info-circle").click(function(){
+		if (infoCount % 2 == 0) {
+			$("#info-popup").slideToggle();
+			$("#scroll").addClass("blur");
+			infoCount += 1;
+		} else {
+			$("#info-popup").slideToggle();
+			$("#scroll").removeClass("blur");
+			infoCount += 1;
+		}
+	});
+	
+	$("#search-bar").keypress(function(event) {
+	var searchQuery = $("#search-bar").val();
+  		if ( event.which == 13 ) {
+			window.location.href = 'http://www.google.com/search?q=' + searchQuery;
+  		}
+	}); // END Keypress Function	
+	
+	$("#settings-overlay").hide();
+	
+	// Menu opener function
+	var count = 2;
+	$("#settings").click(function(){
+		if (count % 2 == 0) {
+			$("#settings-overlay").removeClass('animated fadeOutLeft').css('animation-delay', '0s');
+			$("#settings-overlay").show().addClass('animated fadeInLeft').css('animation-delay', '0s');
+			$(".content").addClass("open");
+			$(".content").removeClass("close");
+			count += 1;
+		} else {
+			$("#settings-overlay").removeClass('animated fadeInLeft').css('animation-delay', '0s');
+			$("#settings-overlay").addClass('animated fadeOutLeft').css('animation-delay', '0s');
+			$(".content").removeClass("open");
+			$(".content").addClass("close");
+			count += 1;
+		}
+	});
+	
+	// Set and save background color
+	var bckgrndClr = localStorage.getItem('backgroundColor');
+	if (localStorage.getItem("cardColor") !== null) {
+		$("#bckgrnd").attr("value",bckgrndClr);
+	}
+	$("body").css("background-color",bckgrndClr);
+	$("#save-btn").click(function(){
+		bckgrndClr = $("#bckgrnd").val();
+		localStorage.setItem('backgroundColor', bckgrndClr);
+		$("body").css("background-color",bckgrndClr);
+		$("#bckgrnd").attr("value",bckgrndClr);
+	});
+	
+	// Set and save card color
+	var cardClr = localStorage.getItem('cardColor');
+	if (localStorage.getItem("cardColor") !== null) {
+		$("#card-color").attr("value",cardClr);
+		$("#btc-price").css("color", cardClr);
+	}
+	$('<style>.card:after{background:'+cardClr+'!important;}</style>').appendTo('body');
+	$("#save-btn").click(function(){
+		cardClr = $("#card-color").val();
+		localStorage.setItem('cardColor', cardClr);
+		$(".card:after").css("background",cardClr);
+		$("#btc-price").css("color", cardClr);
+		$('<style>.card:after{background:'+cardClr+'!important;}</style>').appendTo('body');
+		$("#card-color").attr("value",cardClr);
+	});
+		
+	// Set and save link/icon color
+	var linkClr = localStorage.getItem('linkColor');
+	if (localStorage.getItem("linkColor") !== null) {
+		$("#link-color").attr("value",linkClr);
+		$(".links").css("color",linkClr);
+	}
+	$("#save-btn").click(function(){
+		linkClr = $("#link-color").val();
+		localStorage.setItem('linkColor', linkClr);
+		$("#link-color").attr("value",linkClr);
+		$(".links").css("color",linkClr);
+	});
+		
+	// Set and save background color
+	var dateClr = localStorage.getItem('dateColor');
+	if (localStorage.getItem("dateColor") !== null) {
+		$("#date-color").attr("value",dateClr);
+	}
+	$(".date").css("color",dateClr);
+	$("#save-btn").click(function(){
+		dateClr = $("#date-color").val();
+		localStorage.setItem('dateColor', dateClr);
+		$(".date").css("color",dateClr);
+		$("#date-color").attr("value",dateClr);
+	});
+	
+	// Set Link 1 Icon & Link
+	var iconOne = localStorage.getItem('iconOne');
+	if (localStorage.getItem("iconOne") !== null) {
+		$("#change-icon-1-val").attr("value",iconOne);
+		$("#icon-1").removeClass();
+		$("#icon-1").addClass("fa fa-"+iconOne);
+	}
+	$("#save-btn").click(function(){
+		iconOne = $("#change-icon-1-val").val();
+		localStorage.setItem('iconOne', iconOne);
+		$("#icon-1").removeClass();
+		$("#icon-1").addClass("fa fa-"+iconOne);
+	});
+	var linkOne = localStorage.getItem('linkOne');
+	if (localStorage.getItem("linkOne") !== null) {
+		$("#change-link-1-val").attr("value",linkOne);
+		$("#link-1").attr("href", linkOne);
+	}
+	$("#save-btn").click(function(){
+		linkOne = $("#change-link-1-val").val();
+		localStorage.setItem('linkOne', linkOne);
+		$("#change-link-1-val").attr("value",linkOne);
+		$("#link-1").attr("href", linkOne);
+	});
+		
+	// Set Link 2 Icon & Link
+	var iconTwo = localStorage.getItem('iconTwo');
+	if (localStorage.getItem("iconOne") !== null) {
+		$("#change-icon-2-val").attr("value",iconTwo);
+		$("#icon-2").removeClass();
+		$("#icon-2").addClass("fa fa-"+iconTwo);
+	}
+	$("#save-btn").click(function(){
+		iconTwo = $("#change-icon-2-val").val();
+		localStorage.setItem('iconTwo', iconTwo);
+		$("#icon-2").removeClass();
+		$("#icon-2").addClass("fa fa-"+iconTwo);
+	});
+	var linkTwo = localStorage.getItem('linkTwo');
+	if (localStorage.getItem("linkTwo") !== null) {
+		$("#change-link-2-val").attr("value",linkTwo);
+		$("#link-2").attr("href", linkTwo);
+	}
+	$("#save-btn").click(function(){
+		linkTwo = $("#change-link-2-val").val();
+		localStorage.setItem('linkTwo', linkTwo);
+		$("#change-link-2-val").attr("value",linkTwo);
+		$("#link-2").attr("href", linkTwo);
+	});
+	
+	// Set Link 3 Icon & Link
+	var iconThree = localStorage.getItem('iconThree');
+	if (localStorage.getItem("iconThree") !== null) {
+		$("#change-icon-3-val").attr("value",iconThree);
+		$("#icon-3").removeClass();
+		$("#icon-3").addClass("fa fa-"+iconThree);
+	}
+	$("#save-btn").click(function(){
+		iconThree = $("#change-icon-3-val").val();
+		localStorage.setItem('iconThree', iconThree);
+		$("#icon-3").removeClass();
+		$("#icon-3").addClass("fa fa-"+iconThree);
+	});
+	var linkThree = localStorage.getItem('linkThree');
+	if (localStorage.getItem("linkThree") !== null) {
+		$("#change-link-3-val").attr("value",linkThree);
+		$("#link-3").attr("href", linkThree);
+	}
+	$("#save-btn").click(function(){
+		linkThree = $("#change-link-3-val").val();
+		localStorage.setItem('linkThree', linkThree);
+		$("#change-link-3-val").attr("value",linkThree);
+		$("#link-3").attr("href", linkThree);
+	});
+		
+	// Set Link 4 Icon & Link
+	var iconFour = localStorage.getItem('iconFour');
+	if (localStorage.getItem("iconFour") !== null) {
+		$("#change-icon-4-val").attr("value",iconFour);
+		$("#icon-4").removeClass();
+		$("#icon-4").addClass("fa fa-"+iconFour);
+	}
+	$("#save-btn").click(function(){
+		iconFour = $("#change-icon-4-val").val();
+		localStorage.setItem('iconFour', iconFour);
+		$("#icon-4").removeClass();
+		$("#icon-4").addClass("fa fa-"+iconFour);
+	});
+	var linkFour = localStorage.getItem('linkFour');
+	if (localStorage.getItem("linkFour") !== null) {
+		$("#change-link-4-val").attr("value",linkFour);
+		$("#link-4").attr("href", linkFour);
+	}
+	$("#save-btn").click(function(){
+		linkFour = $("#change-link-4-val").val();
+		localStorage.setItem('linkFour', linkFour);
+		$("#change-link-4-val").attr("value",linkFour);
+		$("#link-4").attr("href", linkFour);
+	});
+			
+	// Set Link 5 Icon & Link
+	var iconFive = localStorage.getItem('iconFive');
+	if (localStorage.getItem("iconFive") !== null) {
+		$("#change-icon-5-val").attr("value",iconFive);
+		$("#icon-5").removeClass();
+		$("#icon-5").addClass("fa fa-"+iconFive);
+	}
+	$("#save-btn").click(function(){
+		iconFive = $("#change-icon-5-val").val();
+		localStorage.setItem('iconFive', iconFive);
+		$("#icon-5").removeClass();
+		$("#icon-5").addClass("fa fa-"+iconFive);
+	});
+	var linkFive = localStorage.getItem('linkFive');
+	if (localStorage.getItem("linkFive") !== null) {
+		$("#change-link-5-val").attr("value",linkFive);
+		$("#link-5").attr("href", linkFive);
+	}
+	$("#save-btn").click(function(){
+		linkFive = $("#change-link-5-val").val();
+		localStorage.setItem('linkFive', linkFive);
+		$("#change-link-5-val").attr("value",linkFive);
+		$("#link-5").attr("href", linkFive);
+	});
+	
+	// Save Toggle Solid Menu Option
+	var solidMenuState = localStorage.getItem('solidMenuState');
+	if (localStorage.getItem("solidMenuState") == "checked") {
+		$("#settings-overlay").css("background", "#ffffff");
+		$("input[id='switch']").prop('checked', true);
+	} else {
+		$("#settings-overlay").css("background", "rgba(250,250,250,0.2)");
+		$("input[id='switch']").prop('checked', false);
+	}
+	$("#save-btn").click(function(){
+		if($("input[id='switch']").is(':checked')) {
+			localStorage.setItem('solidMenuState', "checked");
+			$("#settings-overlay").css("background", "#ffffff");
+		} else {
+			localStorage.setItem('solidMenuState', "unchecked");
+			$("#settings-overlay").css("background", "rgba(250,250,250,0.2)");
+		}
+	});
+	
+// Current Bitcoin Price Function	
+function btcprice() {
+var currency = "CAD";
+var apiurl = 'https://api.coindesk.com/v1/bpi/currentprice/' + currency + '.json';
+    
+$.ajax({
+  type: "GET",
+  url: apiurl,
+  async: false,
+  dataType: 'json',
+  success: function(data){ 
+    var price = data["bpi"][currency]["rate_float"];
+	  var priceRounded = Math.round(price);
+	  $("#btc-price").append("$" + priceRounded + " " + currency);
+    }, 
+  error: function(errorMessage){
+      alert("ajax call failed");
+    }  
+}); // END ajax call	
+}
+btcprice();
+	
+//Date Functionality
+var date = new Date();
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+var weekday = weekdays[date.getDay()];
+var month = date.getMonth();
+var monthday = date.getDate();
+var year = date.getYear();	
+
+$('#weekday').html(weekday);
+	
+switch (monthday) {
+	case 1:
+	case 21: 
+	case 31:
+    	var affix = "st";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
+    	break;
+	case 2: 
+	case 22:
+    	var affix = "nd";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
+    	break;
+	case 3: 
+	case 23:
+     	var affix = "rd";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
+   	break;
+	case 4: 
+	case 5: 
+	case 6: 
+	case 7: 
+	case 8: 
+	case 9: 
+	case 10: 
+	case 11: 
+	case 12: 
+	case 13: 
+	case 14: 
+	case 15: 
+	case 16: 
+	case 17: 
+	case 18: 
+	case 19: 
+	case 20: 
+	case 24: 
+	case 25: 
+	case 26: 
+	case 27: 
+	case 28: 
+	case 29:
+	case 30:
+   	var affix = "th";
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
+}	
+	
+}); // END Document Ready Function
+</script>	
+
+</body>
