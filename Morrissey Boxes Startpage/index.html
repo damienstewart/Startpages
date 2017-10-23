@@ -315,17 +315,17 @@ switch (monthday) {
 	case 21: 
 	case 31:
     	var affix = "st";
-		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
+		$('#month-date').html(months[month] + ", " + monthday + affix + " " + (year+1900));
     	break;
 	case 2: 
 	case 22:
     	var affix = "nd";
-		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
+		$('#month-date').html(months[month] + ", " + monthday + affix + " " + (year+1900));
     	break;
 	case 3: 
 	case 23:
      	var affix = "rd";
-		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
+		$('#month-date').html(months[month] + ", " + monthday + affix + " " + (year+1900));
    	break;
 	case 4: 
 	case 5: 
