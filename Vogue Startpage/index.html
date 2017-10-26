@@ -1,0 +1,168 @@
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet"> 
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<title>Startpage</title>
+</head>
+
+<body>
+<div class="half-left">
+</div>
+<div class="half-right">
+	<h1 id="weekday"></h1>
+	<h2><span id="month-date"></span> <span id="year"></span></h2>
+	<input id="search-bar" type="text" placeholder="&#xF002;" />
+</div>
+
+	
+<style>
+	h1 {
+		font-family: 'Arapey', serif;
+		font-size: 92px;
+		font-weight: 200;
+		margin-bottom: 0;
+		text-transform: uppercase;
+	}
+	h2 {
+		font-family: 'Arapey', serif;
+		font-size: 38px;
+		font-weight: 200;
+		margin-top: 0;
+		text-transform: uppercase;
+	}
+	sup {
+		color: #bd3630;
+		text-transform: lowercase !important;
+	}
+	html {
+		min-width: 320px;
+		margin: 0;
+		height: 100%;
+		background-color: #efedf0;
+	}
+	#search-bar {
+		width: 50%;
+		height: 42px;
+		padding-left: 13px;
+		border: 2px solid black;
+		background-color: transparent;
+		color: black;
+		font-size: 17px;
+		letter-spacing: 2px;
+	}
+	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+		font-family:Arial, FontAwesome;
+		color: #bd3630 !important;
+		opacity: 1 !important;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		font-family:Arial, FontAwesome;
+		color: #bd3630 !important;
+		opacity: 1 !important;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+		font-family:Arial, FontAwesome;
+		color: #bd3630 !important;
+		opacity: 1 !important;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		font-family:Arial, FontAwesome;
+		color: #bd3630 !important;
+		opacity: 1 !important;
+	}
+	::-ms-input-placeholder { /* Microsoft Edge */
+		font-family:Arial, FontAwesome;
+		color: #bd3630 !important;
+		opacity: 1 !important;
+	}
+	input[type=text]{
+		font-family: 'Arapey', serif !important;
+	}
+	.half-right {
+		width: 50%;
+		float: right;
+		text-align: center;
+	}
+	.half-left {
+    	width: 50%;
+    	float: left;
+    	background-image: url("http://res.cloudinary.com/http-www-okvitae-com/image/upload/v1508988745/Vogue-Cover-Print-White-Frame_epmqsh.jpg");
+    	background-size: contain;
+    	height: 100%;
+    	background-position: top left;
+    	background-repeat: no-repeat;
+		max-width: 550px;
+	}
+</style>
+	
+<script>
+$(document).ready(function(){
+// Search Bar Functionality
+  $("#search-bar").keypress(function(event) {
+	var searchQuery = $("#search-bar").val();
+    if ( event.which == 13 ) {
+      window.location.href = 'http://www.google.com/search?q=' + searchQuery;
+    }
+  }); // END Keypress Function
+		
+	
+//Date Functionality
+var date = new Date();
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+var weekday = weekdays[date.getDay()];
+var month = date.getMonth();
+var monthday = date.getDate();
+var year = date.getYear();	
+
+$('#weekday').html(weekday);
+	
+switch (monthday) {
+	case 1:
+	case 21: 
+	case 31:
+    	var affix = "st";
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup>");
+    	break;
+	case 2: 
+	case 22:
+    	var affix = "nd";
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup>");
+    	break;
+	case 3: 
+	case 23:
+     	var affix = "rd";
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup>");
+   	break;
+	case 4: 
+	case 5: 
+	case 6: 
+	case 7: 
+	case 8: 
+	case 9: 
+	case 10: 
+	case 11: 
+	case 12: 
+	case 13: 
+	case 14: 
+	case 15: 
+	case 16: 
+	case 17: 
+	case 18: 
+	case 19: 
+	case 20: 
+	case 24: 
+	case 25: 
+	case 26: 
+	case 27: 
+	case 28: 
+	case 29:
+	case 30:
+   	var affix = "th";
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> ");
+}
+$('#year').html(year + 1900);
+}); // END Document Ready Function
+</script>	
+	
+</body>
