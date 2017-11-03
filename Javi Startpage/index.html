@@ -1,0 +1,195 @@
+<head>
+<!-- TODO: add input fields in overlay to change icons and hrefs  -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<title>Startpage</title>
+</head>
+
+<body>
+
+	<div class="circle front-lg"><i class="fa fa-lightbulb-o"></i></div>
+	<div class="circle middle-lg"></div>
+	<div class="circle back-lg"></div>
+	<div id="stripe"></div>
+	
+	<div class="banner">
+		
+		<div class="date">
+			<h1 style="margin: 0; padding-top: 8px;" id="weekday"></h1>
+			<p style="margin: 0;" id="month-date"></p>
+		</div>
+		
+		<div class="icons">
+			<a href="http://soundcloud.com/"><i class="fa fa-soundcloud icon"></i></a>
+			<a href="http://twitter.com/"><i class="fa fa-twitter icon"></i></a>
+			<a href="http://reddit.com/"><i class="fa fa-reddit icon"></i></a>
+			<a href="http://github.com/"><i class="fa fa-github icon"></i></a>
+			<a href="http://codepen.io/"><i class="fa fa-codepen icon"></i></a>
+		</div>
+		
+	</div>	
+<style>
+	body {
+		margin: 0;
+	}
+	html {
+    	height: 100%;
+    	-webkit-background-size: cover;
+    	-moz-background-size: cover;
+    	-o-background-size: cover;
+    	background-size: cover;
+    	background: #D6587E;
+    	background-repeat:no-repeat;
+    	background: -webkit-linear-gradient( to left bottom, #4e4991, #da82b2);
+    	background: -moz-linear-gradient( to left bottom, #4e4991, #da82b2);
+    	background: -ms-linear-gradient( to left bottom, #4e4991, #da82b2);
+    	background: -o-linear-gradient( to left bottom, #4e4991, #da82b2);
+    	background: linear-gradient( to left bottom, #4e4991, #da82b2);
+	}
+	.fa-lightbulb-o {
+		z-index: 9999;
+		color: #a88db6;
+		font-size: 40px;
+		position: absolute;
+		top: 31px;
+		left: 39px;
+	}
+	.front-lg {
+		width: 100px;
+		height: 100px;
+		background-color: white;
+		z-index: 999;
+		position: absolute;
+		left: calc(25% + 20px);
+		top: calc(25% + 20px);
+	}
+	.middle-lg {
+		width: 120px;
+		height: 120px;
+		background-color: rgba(255,255,255,0.5);
+		z-index: 99;
+		position: absolute;
+		left: calc(25% + 10px);
+		top: calc(25% + 10px);
+	}
+	.back-lg {
+		width: 140px;
+		height: 140px;
+		background-color: rgba(255,255,255,0.2);
+		z-index: 9;
+		position: absolute;
+		left: 25%;
+		top: 25%;
+		box-shadow: 0px 0px 60px -6px rgb(139,110,160);
+	}
+	.circle {
+		border-radius: 50%
+	}
+	#stripe {
+		height: calc(75% - 132px);
+		position: absolute;
+		top: calc(25% + 119px);
+		left: calc(25% + 65px);
+		border: 6px solid rgba(255,255,255);
+		z-index: 9;
+
+	}
+	.banner {
+		position:absolute;
+		bottom: 20%;
+		left: 0;
+		height: 80px;
+		width: 100%;
+		background-color: rgba(255,255,255,0.2);
+	}
+	.date {
+		color: white;
+		text-align:center;
+		width: calc(25% + 65px);
+		margin: 0;
+		height: 80px;
+		font-family: 'Lato', sans-serif;
+		float: left;
+	}
+	.icons {
+		width: calc(75% - 76px);
+		height: 80px;
+		float: right;
+		text-align: center;
+		color: white;
+		font-size: 32px;
+		padding-top: 23px;
+	}
+	.icons a {
+		color: white;
+	}
+	.icon {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+</style>
+
+<script>
+$(document).ready(function(){
+//Date Functionality
+var date = new Date();
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+var weekday = weekdays[date.getDay()];
+var month = date.getMonth();
+var monthday = date.getDate();
+var year = date.getYear();	
+
+$('#weekday').html(weekday);
+	
+switch (monthday) {
+	case 1:
+	case 21: 
+	case 31:
+    	var affix = "st";
+		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+    	break;
+	case 2: 
+	case 22:
+    	var affix = "nd";
+		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+    	break;
+	case 3: 
+	case 23:
+     	var affix = "rd";
+		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+   	break;
+	case 4: 
+	case 5: 
+	case 6: 
+	case 7: 
+	case 8: 
+	case 9: 
+	case 10: 
+	case 11: 
+	case 12: 
+	case 13: 
+	case 14: 
+	case 15: 
+	case 16: 
+	case 17: 
+	case 18: 
+	case 19: 
+	case 20: 
+	case 24: 
+	case 25: 
+	case 26: 
+	case 27: 
+	case 28: 
+	case 29:
+	case 30:
+   	var affix = "th";
+		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+}
+	
+}); // END Document Ready Function
+</script>
+
+</body>
+
