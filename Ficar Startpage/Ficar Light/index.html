@@ -1,0 +1,238 @@
+<head>
+	<title>Startpage</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+		<div class="innerbox-left">
+			<p id="innerbox-left-title">[root@<span style="color:#6e6e6e;">workstation</span> ~]$ ><input type="text" placeholder="search" id="searchbar" autofocus/></p>
+			
+			<div class="reddit-link">
+				<p>[root@<span style="color:#6e6e6e;">workstation</span> ~]$ > wget https://www.reddit.com/r/news</p>
+				<p><a href="" id="news-title-lnk"><span id="news-title"></span></a></p>
+				<p><span id="score"> </span> <span id="next-post-news"> nextpost></span></p>
+				<p>[root@<span style="color:#6e6e6e;">workstation</span> ~]$ > btc -c -p -cad</p>
+				<p id="btc-price"></p>
+				<p>[root@<span style="color:#6e6e6e;">workstation</span> ~]$ > date -r</p>
+				<p><span id="weekday"></span>, <span id="month-date"></span></p>
+			</div>
+		</div>
+	</div>
+<style>
+	html {
+		background-color: white;
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		height: 100%;
+		margin: 0;
+	}
+	.container {
+		height: 100%;
+		background-image: url(http://res.cloudinary.com/http-www-okvitae-com/image/upload/v1510120587/Cazy6V4_bowhfc.png);
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+		box-shadow: 0px 0px 18px 2px rgba(48,48,48,0.6);
+	}
+	.innerbox-left {
+		width: 40%;
+		height: 50%;
+		border: 2px solid #979797;
+		position: absolute;
+		top: 25%;
+		left: 10%;
+		text-align: left;
+		float: left;
+		background-color: rgba(255,255,255,0.8);
+	}
+	p, h1, h2, h3 {
+		font-family: 'hermitlight';
+		color: #8189c1;
+	}
+	.reddit-link {
+		padding-left: 10px;
+	}
+	.reddit-link a {
+		text-decoration: none;
+		color: #6e6e6e;
+	}
+	.fa-heart {
+		color: #6e6e6e;
+	}
+	#next-post-news {
+		color: #6e6e6e;
+		cursor: pointer;
+	}
+	#innerbox-left-title {
+		border-bottom: 2px solid #979797;
+		padding-bottom: 12px;
+		color: #8189c1;
+		margin: 0;
+		padding-top: 12px;
+		padding-left: 10px;
+	}
+	#searchbar {
+		width: calc(100% - 222px);
+		line-height: 1.5;
+		margin-left: 10px;
+		font-family: 'hermitlight';
+		color: #8189c1;
+		border: none;
+		background: rgba(0,0,0,0);
+		font-size: 16px;
+	}
+	@media (max-width: 890px) {
+		.innerbox-left {
+			width: 80%;
+			left: 0;
+			margin-left: 10%;
+			margin-right: 10%;
+		}
+	}
+	@media (max-width: 450px) {
+		.innerbox-left {
+			width: calc(100% - 40px);
+			left: 0;
+			top: 20%;
+			margin-left: 20px;
+			margin-right: 20px;
+			height: 70%;
+			
+		}
+	}
+	@font-face {
+    font-family: 'hermitlight';
+    src: url('fonts/hermit-light-webfont.woff2') format('woff2'),
+         url('fonts/hermit-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+	}
+</style>
+
+<script>
+$(document).ready(function(){
+	
+$("#searchbar").keypress(function(event) {
+	var searchQuery = $("#searchbar").val();
+ 	if ( event.which == 13 ) {
+    	window.location.href = 'http://www.google.com/search?q=' + searchQuery;
+  	}
+}); // END Keypress Function
+	
+var subreddit = "News";
+var apiurl = 'https://www.reddit.com/r/' + subreddit + '/.json?';
+var postnum = 1;
+	
+function updatepost() {
+    $.ajax({
+      type: "GET",
+      url: apiurl,
+      async: false,
+      dataType: 'json',
+      success: function(data){ 
+        var title = data["data"]["children"][postnum]["data"]["title"];
+		var score = data["data"]["children"][postnum]["data"]["score"];
+		  	$("#news-title").empty().prepend(title);
+		  	$("#score").empty().append('<i class="fa fa-heart"> </i>' + ' ' + score);
+		  	$("#news-title-link").attr("href","https://reddit.com" + data["data"]["children"][postnum]["data"]["permalink"]);
+      	}, 
+      	error: function(errorMessage){
+        	alert("Reddit ajax call failed");
+  		}      
+    }); // END ajax call
+} // End Update Post function
+updatepost();
+	
+$("#next-post-news").click(function(){
+	postnum = postnum+1;
+	updatepost();
+});
+	
+function btcprice() {
+var currency = "CAD";
+var apiurl = 'https://api.coindesk.com/v1/bpi/currentprice/' + currency + '.json';
+    
+$.ajax({
+  type: "GET",
+  url: apiurl,
+  async: false,
+  dataType: 'json',
+  success: function(data){ 
+    var price = data["bpi"][currency]["rate_float"];
+	  var priceRounded = Math.round(price);
+	  $("#btc-price").append("$" + priceRounded + " " + currency);
+    }, 
+  error: function(errorMessage){
+      alert("ajax call failed");
+    }  
+}); // END ajax call	
+}
+btcprice();	
+	
+//Date Functionality
+var date = new Date();
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+var weekday = weekdays[date.getDay()];
+var month = date.getMonth();
+var monthday = date.getDate();
+var year = date.getYear();	
+
+$('#weekday').html(weekday);
+	
+switch (monthday) {
+	case 1:
+	case 21: 
+	case 31:
+    	var affix = "st";
+		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+    	break;
+	case 2: 
+	case 22:
+    	var affix = "nd";
+		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+    	break;
+	case 3: 
+	case 23:
+     	var affix = "rd";
+		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+   	break;
+	case 4: 
+	case 5: 
+	case 6: 
+	case 7: 
+	case 8: 
+	case 9: 
+	case 10: 
+	case 11: 
+	case 12: 
+	case 13: 
+	case 14: 
+	case 15: 
+	case 16: 
+	case 17: 
+	case 18: 
+	case 19: 
+	case 20: 
+	case 24: 
+	case 25: 
+	case 26: 
+	case 27: 
+	case 28: 
+	case 29:
+	case 30:
+   	var affix = "th";
+		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+}	
+		
+}); // END Document Ready Function
+</script>	
+	
+</body>
