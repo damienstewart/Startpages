@@ -70,8 +70,8 @@
   <div class="card">
     <div class="firstinfo"><img src="http://res.cloudinary.com/http-www-okvitae-com/image/upload/v1508633124/white-circle-128x128_x8bwyu.png"/>
       <div class="profileinfo">
-		<h1 class="date" id="weekday" style="width: 300px;height: 40px; margin-bottom: 0;"></h1>
-        <h1 class="date" id="month-date" style="width: 300px;height: 40px; margin-top: 2px;"></h1>
+		<h1 class="date" id="weekday" style="width: 325px;height: 40px; margin-bottom: 0;"></h1>
+        <h1 class="date" id="month-date" style="width: 325px;height: 40px; margin-top: 2px;"></h1>
         <h3 id="btc-price">btc price: </h3>
         <input id="search-bar" type="text" placeholder="&#xF002; search" />
       </div>
@@ -661,17 +661,17 @@ switch (monthday) {
 	case 21: 
 	case 31:
     	var affix = "st";
-		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + ", " + (year+1900));
     	break;
 	case 2: 
 	case 22:
     	var affix = "nd";
-		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + ", " + (year+1900));
     	break;
 	case 3: 
 	case 23:
      	var affix = "rd";
-		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + ", " + (year+1900));
    	break;
 	case 4: 
 	case 5: 
@@ -698,7 +698,7 @@ switch (monthday) {
 	case 29:
 	case 30:
    	var affix = "th";
-		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + ", " + (year+1900));
 }	
 	
 }); // END Document Ready Function
