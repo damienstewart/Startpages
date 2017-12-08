@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Chango" rel="stylesheet"> 
+	<title>Startpage</title>
+</head>
+
+<body>
+	<div class="container back-rec">
+		<div class="container quarts">
+			<div id="top-left" class="container">
+				<div class="push">
+					<h1>News</h1>
+					<a href="" id="news-title-link"><p id="news-title"></p></a>
+					<p id="score"></p>
+					<p id="next-post-news">Next post ></p>
+				</div>
+			</div>
+		</div>
+		<div class="container quarts">
+			<div id="top-right" class="container">
+				<div class="push">
+				<h1>Date &amp; Weather</h1>
+				<p class="date"><span id="weekday"></span> <span id="month-date"></span></p>
+				<p class="weather-widget"><i class="fa fa-gear"> </i> <span id="weather"></span></p>
+				<div class="settings">
+					<p class="x">x</p>
+					<p>City: <input class="enter entercity" type="text" /></p>
+					<p>Country: <input class="enter entercountry" type="text" /></p>
+					<p>Please use ISO 3166 country codes. <br/>Find your country code here: <a href="https://www.iso.org/obp/ui/#search">iso.org</a></p>
+					<ul>
+						<li>
+							<input type="radio" id="cel" name="unit" value="cel">
+							<label for="cel">&deg;C</label>
+						</li>
+						<li>
+							<input type="radio" id="far" name="unit" value="far">
+							<label for="far">&deg;F</label>
+						</li>
+					</ul>
+				<button id="save">save</button>
+				</div>
+				<p>Current BTC Price: <span id="btc-price"></span></p>
+				</div>
+			</div>
+		</div>
+		<div class="container quarts">
+			<div id="bottom-left" class="container">
+				<div class="push">
+					<h1>Links</h1>
+				</div>
+				<div class="links">
+					<a href="http://codepen.io/"><i class="fa fa-codepen"></i></a>
+					<a href="http://reddit.com/"><i class="fa fa-reddit"></i></a>
+					<a href="https://soundcloud.com/"><i class="fa fa-soundcloud"></i></a>
+					<a href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+				</div>
+				<div class="links">
+					<a href="https://news.ycombinator.com/"><i class="fa fa-yc"></i></a>
+					<a href="http://github.com/"><i class="fa fa-github"></i></a>
+					<a href="https://medium.com/"><i class="fa fa-medium"></i></a>
+					<a href="http://gmail.com/"><i class="fa fa-envelope"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="container quarts">
+			<div id="bottom-right" class="container">
+				<div class="push">
+					<h1>Y Combinator</h1>
+					<p>Top Story: <a href="" id="yc-link"><span id="yc-title"></span></a></p>
+					<p>Score: <span id="yc-score"></span></p>
+					<p>Comments: <a href="" id="yc-thread"><span id="yc-comments"></span></a></p>
+				</div>
+			</div>
+		</div>
+	</div>	
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+		background: linear-gradient(to bottom right, #53c6f3, #a142dc);	
+		height: 100vh;
+	}
+	h1, h2, h3 {
+		font-family: 'Chango', cursive;
+		color: #ffffff;
+		margin-top: 0em;
+		padding-top: 0.5em;
+	}
+	p {
+		font-family: 'Quicksand', sans-serif;
+		color: #ffffff;
+		font-size: 18px;
+	}
+	a {
+		color: white;
+	}
+	input[type=text] {
+		color: #ff5e94;
+		border-top: 0;
+		border-left: 0;
+		border-right: 0;
+		border-bottom: 1px solid #ff5e94;
+		font-family: 'nationalelight', 'Quicksand';
+		font-size: 18px;
+	}
+	#bottom-right a {
+		color: #fee4e6 !important;
+		text-decoration: none;
+	}
+	.links {
+		text-align: center;
+		font-size: 42px;
+	}
+	.links i {
+		color: white;
+		padding: 10px;
+	}
+	.settings {
+		position: absolute;
+		background: #ffffff;
+		border-radius: 10px;
+		padding: 1em;
+	}
+	.fa-gear {
+		cursor: pointer;
+	}
+	.settings p {
+		color: #8f93f7;
+	}
+	.settings a {
+		color: #ff5e94 !important;
+		text-decoration: none !important;
+	}
+	.settings button {
+		border: 1px solid #ff5e94;
+		background-color: transparent;
+		color: #ff5e94;
+		border-radius: 10px;
+		width: 100%;
+		padding-top: 6px;
+		padding-bottom: 6px;
+		font-size: 15px;
+	}
+	.x {
+		position: absolute;
+		color: #e37fad;
+		right: 12px;
+		top: 5px;
+		padding: 0;
+		margin: 0;
+		cursor: pointer;
+	}
+	.push {
+		margin-left: 1em;
+		margin-right: 1em;
+	}
+	.container {
+		border-radius: 10px;
+	}
+	.back-rec {
+		background-color: #ffffff;
+		position: relative;
+		top: 5%;
+		left: 5%;
+		height: 90%;
+		width: 90%;
+	}
+	.quarts {
+		width: 50%;
+		height: 50%;
+		float: left;
+	}
+	#news-title-link {
+		text-decoration: none;
+	}
+	#next-post-news {
+		cursor: pointer;
+	}
+	#top-left {
+		width: 70%;
+		height: 70%;
+		background: linear-gradient(to top right, #fed45b, #ff883c);
+		float: right;
+		margin-top: 16%;
+		margin-right: 1.5%;
+	}
+	#top-right {
+		width: 70%;
+		height: 70%;
+		background: linear-gradient(to top right, #ff5e94, #fd999f);
+		margin-top: 16%;
+		margin-left: 1.5%;
+	}
+	#bottom-left {
+		width: 70%;
+		height: 70%;
+		background: linear-gradient(to top right, #d272f8, #8f93f7);
+		float: right;
+		margin-top: 1%;
+		margin-right: 1.5%;
+	}
+	#bottom-right {
+		width: 70%;
+		height: 70%;
+		background: linear-gradient(to top right, #2bc1b7, #5be0a7);
+		margin-top: 1%;
+		margin-left: 1.5%;
+	}
+	/* radio buttons */
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		margin-bottom: 1em;
+		text-align: center;
+	}
+
+	label[for="far"], label[for="cel"] {
+		cursor: pointer;
+		border: 1px solid #ff883c;
+		padding: 4px;
+	}	
+	
+	ul li {
+		display: inline;
+		margin-right: 30px;
+	}	
+	
+	ul li input[type=radio]{
+		visibility: hidden;
+		float: left;
+		display: none;
+	}
+
+	ul li .check::before {
+		position: absolute;
+		content: '';
+		border-radius: 100%;
+		height: 15px;
+		width: 15px;
+		top: 5px;
+		left: 5px;
+		margin: auto;
+		transition: background 0.25s linear;
+		-webkit-transition: background 0.25s linear;
+	}
+
+	input[type=radio]:not(:checked) ~ .check {
+		border: 5px solid #ff883c;
+	}
+
+	input[type=radio]:not(:checked) ~ .check::before{
+		background: #ff883c;
+	}
+
+	input[type=radio]:not(:checked) ~ label{
+		color: #ff883c;
+	}	
+	
+	input[type=radio]:checked ~ .check {
+		border: 5px solid #8f93f7;
+	}
+
+	input[type=radio]:checked ~ .check::before{
+		background: #8f93f7;
+	}
+
+	input[type=radio]:checked ~ label{
+		color: #8f93f7;
+		border: 1px solid #8f93f7;
+	}
+</style>
+
+<script>
+$(document).ready(function(){
+	
+// Weather Functionality
+$(".settings").hide();
+$(".fa-gear").click(function(){
+	$(".settings").slideToggle();
+});
+$(".x").click(function(){
+	$(".settings").slideToggle();
+});
+		
+if (localStorage.getItem("locCity") == null) {
+	localStorage.setItem("locCity", "kelowna")
+}
+	
+if (localStorage.getItem("locCountry") == null) {
+	localStorage.setItem("locCountry", "ca")
+}
+if (localStorage.getItem("unit") == null) {
+	localStorage.setItem("unit", "&deg;C")
+	$("#cel").attr('checked', 'checked');
+} else if(localStorage.getItem("unit") == "&deg;C") {
+	$("#cel").attr('checked', 'checked');
+} else if(localStorage.getItem("unit") == "&deg;F") {
+	$("#far").attr('checked', 'checked');
+}
+	
+var baseURL = "http://api.openweathermap.org/data/2.5/weather?q=";
+var city = localStorage.getItem('locCity');
+var country = localStorage.getItem('locCountry')
+var key = "&APPID=15dac795069e9f6ef5b3c4c435136247";	
+var apiurl = baseURL + city + "," + country + key;	
+var unit = localStorage.getItem('unit');
+	
+$(".entercity").attr("value", city);
+$(".entercountry").attr("value", country);
+	
+function getWeather() {
+	var baseURL = "http://api.openweathermap.org/data/2.5/weather?q=";
+	var city = localStorage.getItem('locCity');
+	var country = localStorage.getItem('locCountry')
+	var key = "&APPID=15dac795069e9f6ef5b3c4c435136247";	
+	var apiurl = baseURL + city + "," + country + key;	
+	var unit = localStorage.getItem('unit');
+	
+	$.getJSON(apiurl,function(result){
+    	console.log(result);
+		var temp = result.main.temp;
+		if (localStorage.getItem("unit") == "&deg;C") {
+			temp = temp - 273.15;
+			temp = Math.round(temp);
+		} else if (localStorage.getItem("unit") == "&deg;F") {
+			temp = temp - 273.15;
+			temp = temp * 1.8;
+			temp = temp + 32;
+			temp = Math.round(temp);
+		}
+		
+		$("#weather").empty().append(result.name + ": " + temp + " " + unit + ", " + result.weather[0].description);
+	});
+}	
+getWeather();
+	
+$("#save").click(function(){
+	if ($('.entercity').length > 0 && $('.entercity').val() != '') {
+		localStorage.setItem("locCity", $(".entercity").val());
+	}
+	if ($('.entercountry').length > 0 && $('.entercountry').val() != '') {
+		localStorage.setItem("locCountry", $(".entercountry").val());
+	}
+	if ($('input[id=far]').is(":checked")) {
+		localStorage.setItem("unit", "&deg;F");
+	}
+	if ($('input[id=cel]').is(":checked")) {
+		localStorage.setItem("unit", "&deg;C");
+	}
+	getWeather();
+	$(".settings").slideToggle();
+});		
+	
+//Date Functionality
+var date = new Date();
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+var weekday = weekdays[date.getDay()];
+var month = date.getMonth();
+var monthday = date.getDate();
+var year = date.getYear();	
+
+$('#weekday').html(weekday);
+	
+switch (monthday) {
+	case 1:
+	case 21: 
+	case 31:
+    	var affix = "st";
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + ", " + (year+1900));
+    	break;
+	case 2: 
+	case 22:
+    	var affix = "nd";
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + ", " + (year+1900));
+    	break;
+	case 3: 
+	case 23:
+     	var affix = "rd";
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + ", " + (year+1900));
+   	break;
+	case 4: 
+	case 5: 
+	case 6: 
+	case 7: 
+	case 8: 
+	case 9: 
+	case 10: 
+	case 11: 
+	case 12: 
+	case 13: 
+	case 14: 
+	case 15: 
+	case 16: 
+	case 17: 
+	case 18: 
+	case 19: 
+	case 20: 
+	case 24: 
+	case 25: 
+	case 26: 
+	case 27: 
+	case 28: 
+	case 29:
+	case 30:
+   	var affix = "th";
+		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + ", " + (year+1900));
+}			
+	
+var subreddit = "News";
+var apiurl = 'https://www.reddit.com/r/' + subreddit + '/.json?';
+var postnum = 1;
+	
+function updatepost() {
+    $.ajax({
+      type: "GET",
+      url: apiurl,
+      async: false,
+      dataType: 'json',
+      success: function(data){ 
+        var title = data["data"]["children"][postnum]["data"]["title"];
+		var score = data["data"]["children"][postnum]["data"]["score"];
+		  	$("#news-title").empty().prepend(title);
+		  	$("#score").empty().append('<i class="fa fa-heart"> </i>' + ' ' + score);
+		  	$("#news-title-link").attr("href","https://reddit.com" + data["data"]["children"][postnum]["data"]["permalink"]);
+      	}, 
+      	error: function(errorMessage){
+        	alert("Reddit ajax call failed");
+  		}      
+    }); // END ajax call
+} // End Update Post function
+updatepost();	
+
+$("#next-post-news").click(function(){
+	postnum = postnum+1;
+	updatepost();
+});		
+	
+// Current Bitcoin Price Function	
+function btcprice() {
+var currency = "CAD";
+var apiurl = 'https://api.coindesk.com/v1/bpi/currentprice/' + currency + '.json';
+    
+$.ajax({
+  type: "GET",
+  url: apiurl,
+  async: false,
+  dataType: 'json',
+  success: function(data){ 
+    var price = data["bpi"][currency]["rate_float"];
+	  var priceRounded = Math.round(price);
+	  $("#btc-price").append("$" + priceRounded + " " + currency);
+    }, 
+  error: function(errorMessage){
+      alert("BTC ajax call failed");
+    }  
+}); // END ajax call	
+}
+btcprice();		
+	
+	
+function ycGet() {
+var ycURL = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
+var topID;
+var ycTopID;
+var ycThread;
+	
+$.ajax({
+  type: "GET",
+  url: ycURL,
+  async: false,
+  dataType: 'json',
+  success: function(data){ 
+  	  topID = data[0];
+	  ycTopID = "https://hacker-news.firebaseio.com/v0/item/" + topID + ".json?print=pretty";
+	  ycThread = "https://news.ycombinator.com/item?id=" + topID;
+	  console.log(topID);
+  }, 
+  error: function(errorMessage){
+      alert("YC ajax call failed");
+    }  
+}); // END ajax call	
+
+$.ajax({
+  type: "GET",
+  url: ycTopID,
+  async: false,
+  dataType: 'json',
+  success: function(data){ 
+	  $("#yc-title").empty().append(data.title);
+	  $("#yc-link").attr("href", data.url);
+	  $("#yc-score").empty().append(data.score);
+	  $("#yc-comments").empty().append(data.descendants);
+	  $("#yc-thread").attr("href", ycThread);
+  }, 
+  error: function(errorMessage){
+      alert("YC2 ajax call failed");
+    }  
+}); // END ajax call		
+	
+}
+ycGet();
+	
+});
+</script>
+
+</body>

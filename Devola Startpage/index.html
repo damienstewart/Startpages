@@ -21,11 +21,11 @@
 				<ul>
 					<li>
 						<input type="radio" id="cel" name="unit" value="cel">
-    					<label for="cel">C&deg;</label>
+    					<label for="cel">&deg;C</label>
 					</li>
 					<li>
     					<input type="radio" id="far" name="unit" value="far">
-    					<label for="far">F&deg;</label>
+    					<label for="far">&deg;F</label>
 					</li>
 				</ul>
 				<button id="save">save</button>
@@ -420,11 +420,11 @@ if (localStorage.getItem("locCountry") == null) {
 	localStorage.setItem("locCountry", "ca")
 }
 if (localStorage.getItem("unit") == null) {
-	localStorage.setItem("unit", "C&deg;")
+	localStorage.setItem("unit", "&deg;C")
 	$("#cel").attr('checked', 'checked');
-} else if(localStorage.getItem("unit") == "C&deg;") {
+} else if(localStorage.getItem("unit") == "&deg;C") {
 	$("#cel").attr('checked', 'checked');
-} else if(localStorage.getItem("unit") == "F&deg;") {
+} else if(localStorage.getItem("unit") == "&deg;F") {
 	$("#far").attr('checked', 'checked');
 }
 	
@@ -449,10 +449,10 @@ function getWeather() {
 	$.getJSON(apiurl,function(result){
     	console.log(result);
 		var temp = result.main.temp;
-		if (localStorage.getItem("unit") == "C&deg;") {
+		if (localStorage.getItem("unit") == "&deg;C") {
 			temp = temp - 273.15;
 			temp = Math.round(temp);
-		} else if (localStorage.getItem("unit") == "F&deg;") {
+		} else if (localStorage.getItem("unit") == "&deg;F") {
 			temp = temp - 273.15;
 			temp = temp * 1.8;
 			temp = temp + 32;
@@ -472,10 +472,10 @@ $("#save").click(function(){
 		localStorage.setItem("locCountry", $(".entercountry").val());
 	}
 	if ($('input[id=far]').is(":checked")) {
-		localStorage.setItem("unit", "F&deg;");
+		localStorage.setItem("unit", "&deg;F");
 	}
 	if ($('input[id=cel]').is(":checked")) {
-		localStorage.setItem("unit", "C&deg;");
+		localStorage.setItem("unit", "&deg;C");
 	}
 	getWeather();
 	$(".settings").slideToggle();
