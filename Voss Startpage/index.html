@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+	<title>Voss Startpage</title>
+</head>
+
+<body>
+
+<i style="font-size: 18px; color: white !important; position: absolute; top: 13px; right: 11px; text-shadow: 0 0 14px #000;" id="menu" class="fa fa-info-circle"></i>
+	<div id="settings">
+		<p style="color: white;">Enter your name</p>
+		<input class="inputs" type="text" id="enterName">
+		
+		<p style="color: white;">First Link</p>
+		<input class="inputs" type="text" id="firstLink" value="">
+		
+		<p style="color: white;">First Label</p>
+		<input class="inputs" type="text" id="firstLabel" value="">
+		
+		<p style="color: white;">Second Link</p>
+		<input class="inputs" type="text" id="secondLink">
+		
+		<p style="color: white;">Second Label</p>
+		<input class="inputs" type="text" id="secondLabel">
+		
+		<p style="color: white;">Third Link</p>
+		<input class="inputs" type="text" id="thirdLink">
+		
+		<p style="color: white;">Third Label</p>
+		<input class="inputs" type="text" id="thirdLabel">
+		
+		<p style="color: white;">Fourth Link</p>
+		<input class="inputs" type="text" id="fourthLink">
+		
+		<p style="color: white;">Fourth Label</p>
+		<input class="inputs" type="text" id="fourthLabel">
+		
+		<input type="button" id="save-btn" value="save all">
+	</div>
+	
+<section>
+	<div id="smol">
+		<div class="glitch">
+			<div class="rect trans"></div>
+			<div class="rect-white trans"></div>
+			<div class="rect-white2 trans"></div>
+			<div class="circle trans"></div>
+			<div class="container trans">
+				<p id="greeting" class="hello trans">WELCOME<span class="L">X</span></p>
+			</div>		
+			<div class="text">
+				<span class="name">DAMIEN</span>
+			</div> 
+			<div class="squares trans">
+				<div class="square1 trans"></div>
+				<div class="square2 trans"></div>
+				<div class="square3 trans"></div>
+			</div>
+			<div class="squares-red trans">
+				<div class="square1-red trans"></div>
+				<div class="square2-red trans"></div>
+				<div class="square3-red trans"></div>
+			</div>
+		</div>
+			<div class="links trans">
+				<ul class="trans">
+					<li class="trans"><span class="point">></span><span><a id="firsthref" href="http://arstechnica.com/">ars technica</a></span></li>
+					<li class="trans"><span class="point">></span><span><a id="secondhref" href="https://news.ycombinator.com/">hacker news</a></span></li>
+					<li class="trans"><span class="point">></span><span><a id="thirdhref" href="https://www.theverge.com/">the verge</a></span></li>
+				    <li class="trans"><span class="point">></span><span><a id="fourthhref" href="http://reddit.com/">reddit</a></span></li>
+				</ul>	
+			</div>
+	</div>
+</section>	
+	
+<style>
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #1f1f1f;
+}
+
+.trans {
+	transition: 1s;
+}
+
+.circle {
+	width: 35px;
+	height: 35px;
+	background-color: blue;
+	position: absolute;
+	left: -17px;
+	top: 17px;
+	box-shadow: 0px 0px 44px 15px rgba(17,0,255,1);
+	border-radius: 50%;
+	opacity: 0.9;	
+	-webkit-filter: blur(20px);
+}	
+	
+.rect {
+	position: absolute;
+	background-color: red;
+	width: 75px;
+	height: 5px;
+	-webkit-animation: backnforth 5s infinite;
+	-webkit-filter: blur(2px);
+}
+	
+.name {
+	text-transform: uppercase;
+}
+	
+.point {
+	color: blue;
+	text-shadow: 0px 0px 20px rgba(0, 0, 150, 1);
+	margin-right: 18px;
+}	
+
+#settings {
+	background-color: #161616;
+	padding: 15px;
+	position: absolute;
+	top: 34px;
+	left: 33px;
+	padding-bottom: 35px;
+	z-index: 9999999;
+	bottom: 34px;
+	overflow: auto;
+}
+	
+#settings p {
+	text-align: center;
+	text-transform: uppercase;
+	font-family: "Ubuntu Mono", monospace;
+}	
+	
+#menu {
+	position: absolute;
+	top: 10px;
+	left: 15px;
+	color: white;
+}
+	
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#smol {
+	width: 550px;
+	height: 275px;
+	overflow: visible;
+}
+
+.links {
+	padding-left: 300px;
+	width: 500px;
+	margin-top: -50px;
+	letter-spacing: 6px;
+	font-family: "Ubuntu Mono", monospace;
+	text-transform: uppercase;
+	font-size: 12px;
+	z-index: 999999;
+	position: absolute;
+	-webkit-animation: spacing 5s linear;
+}
+	
+.links ul {
+	list-style: none;
+}
+	
+.links li {
+	margin-bottom: 8px;	
+}	
+
+.links ul a {
+	color: #FE3710;
+	text-decoration: none;
+	margin-top:4px;
+	cursor: pointer;
+	transition: 0.5s;
+}	
+	
+.links ul a:hover {
+	color: #ffffff;
+}	
+	
+.container {
+	width: 100%;
+	position: absolute;
+}	
+	
+.hello {
+	text-align: center;
+	background-color: #47DDC2;
+	color: white;
+	font-family: "Ubuntu Mono", monospace;
+	font-size: 32px;
+	width: 130px;
+	padding: 3px 0;
+	color: black;
+	-webkit-filter: blur(0.2px);
+	
+}	
+	
+.inputs {
+    background-color: #47DDC2;
+    border: 2px solid #47DDC2;
+    text-align: center;
+    font-family: "Ubuntu Mono", monospace;
+    text-transform: uppercase;
+    font-size: 16px;
+    width: calc(100% - 6px);
+}	
+	
+#save-btn {
+    background-color: #47DDC2;
+    border: 2px solid red;
+    height: 20px;
+    margin-top: 24px;
+    padding-top: 6px;
+    padding-bottom: 17px;
+    line-height: 13px;
+    text-transform: uppercase;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 14px;
+	width: 100%;
+	margin-bottom: 30px;
+}	
+	
+.L {
+	margin-top: 5px;
+}	
+	
+.rect-white {
+    height: 50px;
+    width: 4px;
+    background-color: white;
+    position: absolute;
+    right: 40px;
+    top: 71px;
+	-webkit-filter: blur(0.6px);
+}	
+	
+.rect-white2 {
+    width: 70px;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    right: 300px;
+    top: 212px;
+    -webkit-filter: blur(0.6px);
+}	
+	
+.squares {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	right: -200px;
+	top: 160px;
+	-webkit-filter: blur(0.6px);
+	-webkit-animation: upndown 5s infinite;
+}	
+	
+.square1 {
+    width: 4px;
+    height: 4px;
+    background-color: #47DDC2;
+    position: relative;
+    top: 55px;
+}
+	
+.square2 {
+	width: 8px;
+    height: 8px;
+    background-color: #47DDC2;
+    position: relative;
+    top: 2px;
+    left: 10px;
+}	
+	
+.square3 {
+	width: 25px;
+	height: 25px;
+	background-color: #47DDC2;
+	position: relative;
+	top: 9px;
+	left: 35px;	
+}	
+	
+.squares-red {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	right: 315px;
+	top: 210px;
+	-webkit-filter: blur(0.6px);
+	-webkit-animation: shake 50ms infinite;
+}	
+	
+.square1-red {
+    width: 4px;
+    height: 4px;
+    background-color: #f00;
+    position: relative;
+    top: 30px;
+	right: -80px;
+}
+	
+.square2-red {
+	width: 8px;
+    height: 8px;
+    background-color: #f00;
+    position: relative;
+    top: -6px;
+	left: 70px;
+}	
+	
+.square3-red {
+	width: 25px;
+	height: 25px;
+	background-color: #f00;
+	position: relative;
+	top: 19px;
+	left: 27px;
+}	
+	
+	
+.glitch {
+  	position: relative;
+  	display: flex;
+  	justify-content: center;
+  	align-content: center;
+  	height: 100%;
+  	width: 100%;
+    overflow: hidden;
+    overflow: visible;
+}
+
+.glitch .text {
+  -webkit-animation: jerkwhole 2.5s infinite;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.glitch span {
+  position: absolute;
+  color: white;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 8em;
+  text-align: center;
+  -webkit-filter: blur(1px);
+  -webkit-animation: blur 30ms infinite, jerk 50ms infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+}
+
+.glitch span:nth-child(1) {
+  color: red;
+  margin-left: 8px;
+  margin-top: -2px;
+  -webkit-filter: blur(2px);
+}
+
+.glitch span:nth-child(2) {
+  color: #47DDC2;
+  margin-left: 7px;
+  -webkit-filter: blur(2px);
+}
+
+.glitch span:nth-child(3) {
+  color: blue;
+  margin-left: -7px;
+  margin-top: 4px;
+  -webkit-filter: blur(2px);
+  -webkit-animation: jerkblue .5s infinite;
+}
+
+.glitch span:nth-child(4) {
+  color: white;
+  -webkit-filter: blur(1px);
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+}
+
+.glitch span:nth-child(5) {
+  color: rgba(255, 255, 255, 0.4);
+  -webkit-filter: blur(15px);
+}
+
+@-webkit-keyframes blur {
+  0% {
+    -webkit-filter: blur(1px);
+    opacity: 0.8;
+  }
+  50% {
+    -webkit-filter: blur(1px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-filter: blur(1px);
+    opacity: 0.6;
+  }
+}
+@-webkit-keyframes jerk {
+  50% {
+    left: 2px;
+  }
+  51% {
+    left: 0;
+  }
+}
+@-webkit-keyframes jerkup {
+  50% {
+    top: 2px;
+  }
+  51% {
+    top: 0;
+  }
+}
+@-webkit-keyframes jerkblue {
+  0% {
+    left: 0;
+  }
+  30% {
+    left: 0;
+  }
+  31% {
+    left: -10px;
+  }
+  32% {
+    left: 0;
+  }
+  98% {
+    left: 0;
+  }
+  100% {
+    left: 10px;
+  }
+}
+@-webkit-keyframes jerkgreen {
+  0% {
+    left: 0;
+  }
+  30% {
+    left: 0;
+  }
+  31% {
+    left: -20px;
+  }
+  32% {
+    left: 0;
+  }
+  98% {
+    left: 0;
+  }
+  100% {
+    left: 15px;
+  }
+}
+@-webkit-keyframes jerkwhole {
+  40% {
+    opacity: 1;
+    top: 0;
+    left: 0px;
+    -webkit-transform: scale(1, 1);
+    -webkit-transform: skew(0, 0);
+  }
+  41% {
+    opacity: 0.8;
+    top: 0px;
+    left: -100px;
+    -webkit-transform: scale(1, 1.2);
+    -webkit-transform: skew(20deg, 0);
+  }
+  42% {
+    opacity: 0.8;
+    top: 0px;
+    left: 50px;
+    -webkit-transform: scale(1, 1.2);
+    -webkit-transform: skew(-40deg, 0);
+  }
+  43% {
+    opacity: 1;
+    top: 0;
+    left: 0;
+    -webkit-transform: scale(1, 1);
+    -webkit-transform: skew(0, 0);
+  }
+}
+	
+@-moz-keyframes backnforth {
+  0%   { right: 0; }
+  50%  { right: 100px; }
+  100% { right: 0; }
+}	
+
+@-moz-keyframes upndown {
+  0%   { top: 160px; }
+  50%  { top: 115px; }
+  100% { top: 160px; }
+}	
+
+@-moz-keyframes shake {
+  0%   { right: 315px; }
+  50%  { right: 330px; }
+  100% { right: 315px; }
+}	
+		
+@-moz-keyframes spacing {
+  0%   { letter-spacing: 11px; }
+  100% { letter-spacing: 6px; }
+}	
+	
+</style>	
+	
+<script>
+$(document).ready(function(){
+	
+$(function(){
+  for(i=0;i<4;i++){
+    $('.glitch .text span').eq(0).clone().prependTo('.glitch .text');
+  }
+});	
+
+$("#settings").hide();	
+	
+$('#menu').click(function(){
+	$('#settings').slideToggle();
+});	
+
+function updateName() {
+var setName = localStorage.getItem('setName');
+	
+if (localStorage.getItem("setName") !== null) {
+	$(".name").text(setName);
+	$("#enterName").attr("value", setName);
+	$("#enterName").attr("placeholder", setName);
+} else {
+	localStorage.setItem('setName', 'Damien');
+	$("#name").text('Damien');
+	$("#enterName").attr("value", 'Damien');
+	$("#enterName").attr("placeholder", 'Damien');
+  } // END elif
+} // END updateName function
+updateName();
+
+function updateFirstLink() {
+var firstLink = localStorage.getItem('firstLink');
+var firstLabel = localStorage.getItem('firstLabel');	
+	
+if (localStorage.getItem('firstLink') !== null) {
+	$("#firstLink").attr("value", firstLink);
+	$("#firstLink").attr("placeholder", firstLink);
+	
+	$("#firstLabel").attr("value", firstLabel);
+	$("#firstLabel").attr("placeholder", firstLabel);
+	
+	$("#firsthref").attr("href", firstLink);
+	$("#firsthref").text(firstLabel);
+} else {
+	localStorage.setItem("firstLink", "http://arstechnica.com/");
+	localStorage.setItem("firstLabel", "Ars Technica");
+	
+	$("#firstLink").attr("value", "http://arstechnica.com/");
+	$("#firstLabel").attr("value", "Ars Technica");
+
+	$("#firsthref").attr("href", 'http://arstechnica.com/');
+	$("#firsthref").text("Ars Technica");
+  } // END elif
+} // END firstLink	
+updateFirstLink();
+	
+function updateSecondLink() {
+var secondLink = localStorage.getItem('secondLink');
+var secondLabel = localStorage.getItem('secondLabel');	
+	
+if (localStorage.getItem('secondLink') !== null) {
+	$("#secondLink").attr("value", secondLink);
+	$("#secondLink").attr("placeholder", secondLink);
+	
+	$("#secondLabel").attr("value", secondLabel);
+	$("#secondLabel").attr("placeholder", secondLabel);
+	
+	$("#secondhref").attr("href", secondLink);
+	$("#secondhref").text(secondLabel);
+} else {
+	localStorage.setItem("secondLink", "https://news.ycombinator.com/");
+	localStorage.setItem("secondLabel", "Hacker News");
+	
+	$("#secondLink").attr("value", "https://news.ycombinator.com/");
+	$("#secondLabel").attr("value", "Hacker News");
+
+	$("#secondhref").attr("href", 'https://news.ycombinator.com/');
+	$("#secondhref").text("Hacker News");
+  } // END elif
+} // END secondLink	
+updateSecondLink();	
+	
+function updateThirdLink() {
+var thirdLink = localStorage.getItem('thirdLink');
+var thirdLabel = localStorage.getItem('thirdLabel');	
+	
+if (localStorage.getItem('thirdLink') !== null) {
+	$("#thirdLink").attr("value", thirdLink);
+	$("#thirdLink").attr("placeholder", thirdLink);
+	
+	$("#thirdLabel").attr("value", thirdLabel);
+	$("#thirdLabel").attr("placeholder", thirdLabel);
+	
+	$("#thirdhref").attr("href", thirdLink);
+	$("#thirdhref").text(thirdLabel);
+} else {
+	localStorage.setItem("thirdLink", "https://www.theverge.com/");
+	localStorage.setItem("thirdLabel", "The Verge");
+	
+	$("#thirdLink").attr("value", "https://www.theverge.com/");
+	$("#thirdLabel").attr("value", "The Verge");
+
+	$("#thirdhref").attr("href", 'https://www.theverge.com/');
+	$("#thirdhref").text("The Verge");
+  } // END elif
+} // END thirdLink	
+updateThirdLink();		
+	
+function updateFourthLink() {
+var fourthLink = localStorage.getItem('fourthLink');
+var fourthLabel = localStorage.getItem('fourthLabel');	
+	
+if (localStorage.getItem('fourthLink') !== null) {
+	$("#fourthLink").attr("value", fourthLink);
+	$("#fourthLink").attr("placeholder", fourthLink);
+	
+	$("#fourthLabel").attr("value", fourthLabel);
+	$("#fourthLabel").attr("placeholder", fourthLabel);
+	
+	$("#fourthhref").attr("href", fourthLink);
+	$("#fourthhref").text(fourthLabel);
+} else {
+	localStorage.setItem("fourthLink", "http://reddit.com/");
+	localStorage.setItem("fourthLabel", "Reddit");
+	
+	$("#fourthLink").attr("value", "http://reddit.com/");
+	$("#fourthLabel").attr("value", "Reddit");
+
+	$("#fourthhref").attr("href", 'http://reddit.com/');
+	$("#fourthhref").text("Reddit");
+  } // END elif
+} // END fourthLink	
+updateFourthLink();		
+	
+$("#save-btn").click(function(){
+	
+	var name = $("#enterName").val();
+	
+	if ( name.length !== 0 ) {
+		localStorage.setItem('setName', name);
+		$(".name").text(name);
+		$('#settings').slideToggle();	
+	}
+	
+	var link1 = $("#firstLink").val();
+	var label1 = $("#firstLabel").val();
+	localStorage.setItem("firstLink", link1);
+	localStorage.setItem("firstLabel", label1);
+	$("#firsthref").attr("href", link1);
+	$("#firsthref").text(label1);
+	
+	var link2 = $("#secondLink").val();
+	var label2 = $("#secondLabel").val();
+	localStorage.setItem("secondLink", link2);
+	localStorage.setItem("secondLabel", label2);
+	$("#secondhref").attr("href", link2);
+	$("#secondhref").text(label2);
+	
+	var link3 = $("#thirdLink").val();
+	var label3 = $("#thirdLabel").val();
+	localStorage.setItem("thirdLink", link3);
+	localStorage.setItem("thirdLabel", label3);
+	$("#thirdhref").attr("href", link3);
+	$("#thirdhref").text(label3);
+	
+	var link4 = $("#fourthLink").val();
+	var label4 = $("#fourthLabel").val();
+	localStorage.setItem("fourthLink", link4);
+	localStorage.setItem("fourthLabel", label4);
+	$("#fourthhref").attr("href", link4);
+	$("#fourthhref").text(label4);
+	
+	
+});		
+	
+}); // END Document Ready	
+</script>	
+	
+</body>
+
+</html>
